@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -14,6 +14,9 @@ public:
         printf("Point(int x, int y)\n");
     }
     Point(const Point& p): x(p.x), y(p.y) {
+        printf("Point(const Point& p)\n");
+    }
+    Point(const Point* p) : x(p->x), y(p->y) {
         printf("Point(const Point& p)\n");
     }
     ~Point() {
@@ -70,9 +73,9 @@ public:
     Triangle(int x1, int y1, int x2, int y2, int x3, int y3) : firstP(x1, y1), secondP(x2, y2), thirdP(x3, y3) {
         printf("Triangle(int x1, int y1, int x2, int y2, int x3, int y3)\n");
     }
-    Triangle(const Triangle& t) : firstP(t.firstP), secondP(t.secondP), thirdP(t.thirdP) {
+    /*Triangle(const Triangle& t) : firstP(t.firstP), secondP(t.secondP), thirdP(t.thirdP) {
         printf("Triangle(const Triangle &t)\n");
-    }
+    }*/
     ~Triangle() {
         printf("~Triangle()\n");
     }
@@ -102,7 +105,7 @@ public:
     Section(int x1, int y1, int x2, int y2) : Pstart(new Point(x1, y1)), Pend(new Point(x2, y2)) {
         printf("Section(int x1, int y1, int x2, int y2\n");
     }
-    Section(const Section& t) : Pstart(new Point(*t.Pstart)), Pend(new Point(*t.Pend)) {
+    Section(const Section& t) : Pstart(new Point((t.Pstart))), Pend(new Point(*t.Pend)) {
         printf("Section(const Section &t)\n");
     }
     ~Section() {      
@@ -125,6 +128,10 @@ int main()
     NamedPoint* p2 = new NamedPoint(1, 1, 'B');
     delete p1;
     delete p2;*/
+
+    Triangle A(1,1, 3,1, 3,2);
+    Triangle B(A);
+
 
     return 0;
 }
