@@ -1,0 +1,3 @@
+﻿  Laba3.cpp
+D:\USATU\OOP\OOP_Labs\Laba3\Laba3\Laba3.cpp(81): warning C4715: List<Point>::operator[]: значение возвращается не при всех путях выполнения
+  Laba3.vcxproj -> D:\USATU\OOP\OOP_Labs\Laba3\x64\Debug\Laba3.exe
