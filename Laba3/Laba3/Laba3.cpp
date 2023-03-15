@@ -1,12 +1,16 @@
 ﻿#include <iostream>
 
+//Шаблонная нода, которая будет содержать данные и указатель на след элемент
 template<typename T>
 struct Node {
 public:
-	Node* pNext;
-	T data;
-	Node(T _data = T(), Node* _pNext = nullptr) : data(_data), pNext(_pNext) {
-		printf("Node(T _data, Node* _pNext)\n");
+	Node* pNext; //указатель на следующий элемент в списке
+	T data; //данные
+	Node() : data(T()), pNext(nullptr) {
+		printf("Node()\n");
+	}
+	Node(T _data) : data(_data), pNext(nullptr) {
+		printf("Node(T _data)\n");
 	}
 };
 
@@ -16,7 +20,9 @@ public:
 	List();
 	~List();
 	
+	void clear();
 	void push_back(T data);
+	void pop_front();
 	int GetSize() {return Size;}
 	T& operator[](const int index);
 private:
@@ -36,7 +42,17 @@ List<T>::List(): Size(0), Head(nullptr)
 template<typename T>
 List<T>::~List()
 {
+	printf("~List()\n");
+	clear();
+}
 
+template<typename T>
+void List<T>::clear()
+{
+	while (Size) //пока Size != 0 вызывать pop_front, который удаляет элемент из начала и уменьшает Size на 1
+	{
+		pop_front();
+	}
 }
 
 template<typename T>
@@ -59,6 +75,15 @@ void List<T>::push_back(T data)
 	}
 
 	Size++;
+}
+
+template<typename T>
+void List<T>::pop_front()
+{
+	Node<T>* temp = Head;
+	Head = Head->pNext;
+	delete temp;
+	Size--;
 }
 
 template<typename T>
@@ -97,15 +122,8 @@ private:
 
 
 int main() {
-	
-	List<Point> pointList;
-	Point A;
-	Point B;
-	pointList.push_back(A);
-	pointList.push_back(B);
 
-	std::cout << pointList.GetSize() << "\n";
-	std::cout << pointList[1].GetCordX() << "\n";
+
 
 	return 0;
 }
