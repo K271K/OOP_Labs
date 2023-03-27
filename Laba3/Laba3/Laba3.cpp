@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -14,23 +14,20 @@ public:
 	void clear();
 	//добавить в конец списка
 	void push_back(T data);
-	void push_back(T* data);
 	//добавить в начало списка
 	void push_front(T data);
+	void push_front(T* data);
 	//удалить элемент из начала списка
-	void pop_front();
+	T pop_front();
 	//удалить элемент из конца списка
 	void pop_back();
 	//вставить элемент 
 	void insert(T data, int index);
 	//удалить элементы по индексу
 	void remove(int index);
-	//Вывод списка
-	void ListOutput();
 	//Вернуть размер списка
 	int GetSize() {return Size;}
-	//перегрузка оператора квадратные скобки
-	T& operator[](const int index);
+
 	
 private:
 	//Шаблонная нода, которая будет содержать данные и указатель на след элемент
@@ -39,8 +36,6 @@ private:
 	public:
 		Node* pNext; //указатель на следующий элемент в списке
 		T data; //данные
-		T* data; //данные переданные по указателю
-		bool isDynamic = 0;
 		Node() : data(T()), pNext(nullptr) {
 			printf("Node()\n");
 		}
@@ -48,7 +43,7 @@ private:
 			printf("Node(T _data)\n");
 		}
 		~Node() {
-			if (isDynamic) delete data;
+
 			printf("~Node()\n");
 		}
 	};
@@ -77,7 +72,9 @@ void List<T>::clear()
 {
 	while (Size) //пока Size != 0 вызывать pop_front, который удаляет элемент из начала и уменьшает Size на 1
 	{
-		pop_front();
+		T temp;
+		temp = pop_front();
+		delete temp;
 	}
 }
 
@@ -106,30 +103,7 @@ void List<T>::push_back(T data)
 	Size++;
 }
 
-template<typename T>
-void List<T>::push_back(T* data)
-{
-	//если головы нет, значит список пуст и создается нода-голова, в которую будут помещены данные
-	if (Head == nullptr)
-	{
-		Head = new Node<T>(data);
-	}
-	//если голова есть: создаем временный указатель, чтобы пройтись по нодам и найти ноду, у которой указатель на след элемент равен nullptr
-	else
-	{
-		Node<T>* current = this->Head;
 
-		while (current->pNext != nullptr)
-		{
-			current = current->pNext;
-		}
-
-		current->pNext = new Node<T>(data);
-	}
-
-	//увеличиваем size после добавления элемента
-	Size++;
-}
 
 template<typename T>
 void List<T>::push_front(T data)
@@ -141,16 +115,36 @@ void List<T>::push_front(T data)
 }
 
 template<typename T>
-void List<T>::pop_front()
+void List<T>::push_front(T* data)
 {
-	//создаем временный указатель, в который присваиваем указаетль head
-	Node<T>* temp = Head;
-	//следующий элемент после head, становится head
-	Head = Head->pNext;
-	//удаляем указатель на старый head
-	delete temp;
-	//уменьшаем size после удаления элемента
-	Size--;
+	Node<T>* NewNode = new Node<T>(data);
+	NewNode->pNext = Head;
+	Head = NewNode;
+	Size++;
+}
+
+template<typename T>
+T List<T>::pop_front()
+{
+	if (Size == 0)
+	{
+		
+	}
+	else {
+		//создаем временный указатель, в который присваиваем указаетль head
+		Node<T>* temp = Head;
+		T temp_data = 0;
+		if (temp->data)
+			temp_data = temp->data;
+		//следующий элемент после head, становится head
+		Head = Head->pNext;
+		//удаляем указатель на дату;
+		//удаляем указатель на старый head
+		delete temp;
+		return temp_data;
+		//уменьшаем size после удаления элемента
+		Size--;
+	}
 }
 
 template<typename T>
@@ -162,8 +156,12 @@ void List<T>::pop_back()
 template<typename T>
 void List<T>::insert(T data, int index)
 {
+
+	if (Size == 0 || index - Size > 1) {
+
+	}
 	//если индекс 0, добавляем объект в начало
-	if (index == 0)
+	else if (index == 0)
 	{
 		push_front(data);
 	}
@@ -191,10 +189,15 @@ void List<T>::insert(T data, int index)
 template<typename T>
 void List<T>::remove(int index)
 {
+	if (Size == 0) {
+
+	}
 	//если нужно удалить элемент по индексу ноль, вызываем фукнция pop_front()
-	if (index == 0)
+	else if (index == 0)
 	{
-		pop_front();
+		
+		 pop_front();
+		
 	}
 	else
 	{
@@ -211,39 +214,13 @@ void List<T>::remove(int index)
 		//меняем указатель pNext у previous на pNext->ToDelete, после чего pNext будет указывать на [index+1] элемент
 		previous->pNext = ToDelete->pNext;
 
+		delete ToDelete->data;
 		delete ToDelete;
 		Size--;
 	}
 }
 
-template<typename T>
-void List<T>::ListOutput()
-{
-	int current_size = this->GetSize();
-	for (int i = 0; i < current_size; i++)
-	{
-	}
-}
 
-template<typename T>
-T& List<T>::operator[](const int index)
-{
-	//вводим счетчик и пока он не равен переданному индексу идем по нодам, когда счетчик равен индексу, возвращаем данные
-	int counter = 0;
-	Node<T>* current = this->Head;
-	while (current != nullptr)
-	{
-		if (counter == index)
-		{
-			return current->data;
-		}
-		else
-		{
-			current = current->pNext;
-			counter++;
-		}
-	}
-}
 
 //класс для проверки
 class Point {
@@ -263,7 +240,7 @@ public:
 		this->x = T.x;
 		this->y = T.y;
 	}
-	~Point() {
+	virtual ~Point() {
 		printf("~Point(%d, %d)\n", x, y);
 	}
 	
@@ -278,7 +255,7 @@ protected:
 	int y;
 };
 
-class ColoredPoint : Point {
+class ColoredPoint : public Point {
 protected:
 	int color;
 public:
@@ -289,10 +266,10 @@ public:
 		printf("ColoredPoint(int x, int y, int color)\n");
 	}
 	ColoredPoint(const ColoredPoint& cp) : Point(cp), color(cp.color) {
-		printf("NamedPoint(const Point& p)\n");
+		printf("ColoredPoint(const Point& p)\n");
 	}
-	~ColoredPoint() {
-		printf("~NamedPoint(%d, %d, %d)\n", x, y, color);
+	~ColoredPoint() override {
+		printf("~ColoredPoint(%d, %d, %d)\n", x, y, color);
 	}
 	void output() override {
 		printf("x = %d, y = %d, color = %d\n", x, y, color);
@@ -328,35 +305,54 @@ public:
 
 
 int main() {
-	const int COUNT_POINTS = 10;
-	List<Point> points;
 
-	Point* A = new Point();
-	Point B(1, 2);
-	points.push_back(B);
-	points.push_back(A);
+	//srand(time(NULL));
 
-	srand(time(NULL));
-	//int RandValue;
-	//for (int i = 0; i < 10; i++) {
-	//	RandValue = rand() % 3 + 1;
-	//	switch (RandValue)
-	//	{
-	//	case 1:
-	//		cout << "Added Point\n";
-	//		break;
-	//	case 2:
-	//		cout << "ADded ColoredPoint\n";
-	//		break;
-	//	case 3:
-	//		cout << "Added NamedPoint\n";
-	//		break;
-	//	default:
-	//		break;
-	//	}
-	//}
-
+	const int COUNT_POINTS = 10000;
 	
+	List<Point*> points;
+
+	Point* B = new ColoredPoint(1, 1,20);
+
+	points.push_back(B);
+	
+
+
+	/*int rand_value;
+	int rand_x;
+	int rand_y;
+	int rand_color;
+	for (int i = 0; i < COUNT_POINTS; i++)
+	{
+		rand_value = rand() % 6;
+		rand_x = rand() % 100;
+		rand_y = rand() % 100;
+		rand_color = rand() % 255;
+
+		switch (rand_value)
+		{
+		case 0:
+			points.push_back(new ColoredPoint(rand_x, rand_y, rand_color));
+			break;
+		case 1:
+			points.push_front(new ColoredPoint(rand_x, rand_y, rand_color));
+			break;
+		case 2:
+			points.pop_back();
+			break;
+		case 3:
+			points.pop_front();
+			break;
+		case 4:
+			points.insert(new ColoredPoint(rand_x, rand_y, rand_color), i);
+			break;
+		case 5:
+			points.remove(i);
+			break;
+		default:
+			break;
+		}
+	}*/
 
 	return 0;
 }
