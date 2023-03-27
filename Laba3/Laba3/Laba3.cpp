@@ -1,22 +1,6 @@
 ﻿#include <iostream>
 
-//Шаблонная нода, которая будет содержать данные и указатель на след элемент
-template<typename T>
-struct Node {
-public:
-	Node* pNext; //указатель на следующий элемент в списке
-	T data; //данные
-	T* object;
-	Node() : data(T()), pNext(nullptr) {
-		printf("Node()\n");
-	}
-	Node(T _data) : data(_data), pNext(nullptr) {
-		printf("Node(T _data)\n");
-	}
-	~Node() {
-		printf("~Node()\n");
-	}
-};
+using namespace std;
 
 //Класс для односвязного списка
 template<typename T>
@@ -30,6 +14,7 @@ public:
 	void clear();
 	//добавить в конец списка
 	void push_back(T data);
+	void push_back(T* data);
 	//добавить в начало списка
 	void push_front(T data);
 	//удалить элемент из начала списка
@@ -40,16 +25,37 @@ public:
 	void insert(T data, int index);
 	//удалить элементы по индексу
 	void remove(int index);
-	//вернуть размер списка
+	//Вывод списка
+	void ListOutput();
+	//Вернуть размер списка
 	int GetSize() {return Size;}
 	//перегрузка оператора квадратные скобки
 	T& operator[](const int index);
 	
 private:
+	//Шаблонная нода, которая будет содержать данные и указатель на след элемент
+	template<typename T>
+	struct Node {
+	public:
+		Node* pNext; //указатель на следующий элемент в списке
+		T data; //данные
+		T* data; //данные переданные по указателю
+		bool isDynamic = 0;
+		Node() : data(T()), pNext(nullptr) {
+			printf("Node()\n");
+		}
+		Node(T _data) : data(_data), pNext(nullptr) {
+			printf("Node(T _data)\n");
+		}
+		~Node() {
+			if (isDynamic) delete data;
+			printf("~Node()\n");
+		}
+	};
 
 	int Size;
 	//"Голова" списка ( первый элемент )
-	Node <T> *Head;
+	Node <T>* Head;
 };
 
 template<typename T>
@@ -89,6 +95,31 @@ void List<T>::push_back(T data)
 		Node<T>* current = this->Head;
 
 		while (current->pNext != nullptr) 
+		{
+			current = current->pNext;
+		}
+
+		current->pNext = new Node<T>(data);
+	}
+
+	//увеличиваем size после добавления элемента
+	Size++;
+}
+
+template<typename T>
+void List<T>::push_back(T* data)
+{
+	//если головы нет, значит список пуст и создается нода-голова, в которую будут помещены данные
+	if (Head == nullptr)
+	{
+		Head = new Node<T>(data);
+	}
+	//если голова есть: создаем временный указатель, чтобы пройтись по нодам и найти ноду, у которой указатель на след элемент равен nullptr
+	else
+	{
+		Node<T>* current = this->Head;
+
+		while (current->pNext != nullptr)
 		{
 			current = current->pNext;
 		}
@@ -186,6 +217,15 @@ void List<T>::remove(int index)
 }
 
 template<typename T>
+void List<T>::ListOutput()
+{
+	int current_size = this->GetSize();
+	for (int i = 0; i < current_size; i++)
+	{
+	}
+}
+
+template<typename T>
 T& List<T>::operator[](const int index)
 {
 	//вводим счетчик и пока он не равен переданному индексу идем по нодам, когда счетчик равен индексу, возвращаем данные
@@ -230,16 +270,60 @@ public:
 	int GetCordX() {
 		return x;
 	}
+	virtual void output() {
+		printf("x = %d y = %d\n", x, y);
+	}
 protected:
 	int x;
 	int y;
 };
 
 class ColoredPoint : Point {
-public:
-
 protected:
 	int color;
+public:
+	ColoredPoint() : Point(), color(0) {
+		printf("ColoredPoint()\n");
+	}
+	ColoredPoint(int x, int y, int color) : Point(x, y), color(color) {
+		printf("ColoredPoint(int x, int y, int color)\n");
+	}
+	ColoredPoint(const ColoredPoint& cp) : Point(cp), color(cp.color) {
+		printf("NamedPoint(const Point& p)\n");
+	}
+	~ColoredPoint() {
+		printf("~NamedPoint(%d, %d, %d)\n", x, y, color);
+	}
+	void output() override {
+		printf("x = %d, y = %d, color = %d\n", x, y, color);
+	}
+	void changeColor(char newColor) {
+		color = newColor;
+	}
+};
+
+class NamedPoint : public Point {
+protected:
+	char Name;
+public:
+	NamedPoint() : Point(), Name('\0') {
+		printf("NamedPoint()\n");
+	}
+	NamedPoint(int x, int y, char Name) : Point(x, y), Name(Name) {
+		printf("NamedPoint(int x, int y, char Name)\n");
+	}
+	NamedPoint(const NamedPoint& np) : Point(np), Name(np.Name) {
+		printf("NamedPoint(const Point& p)\n");
+	}
+	~NamedPoint() {
+		printf("~NamedPoint(%d, %d, %c)\n", x, y, Name);
+	}
+	void output() override {
+		printf("x = %d, y = %d, Name = %c\n", x, y, Name);
+	}
+	void changeName(char newName) {
+		Name = newName;
+	}
 };
 
 
@@ -247,15 +331,32 @@ int main() {
 	const int COUNT_POINTS = 10;
 	List<Point> points;
 
-	Point A;
+	Point* A = new Point();
+	Point B(1, 2);
+	points.push_back(B);
 	points.push_back(A);
-	
-	for (int i = 0; i < COUNT_POINTS; i++)
-	{
-		Point B(i,i);
-		points.push_back(B);
-	}
 
+	srand(time(NULL));
+	//int RandValue;
+	//for (int i = 0; i < 10; i++) {
+	//	RandValue = rand() % 3 + 1;
+	//	switch (RandValue)
+	//	{
+	//	case 1:
+	//		cout << "Added Point\n";
+	//		break;
+	//	case 2:
+	//		cout << "ADded ColoredPoint\n";
+	//		break;
+	//	case 3:
+	//		cout << "Added NamedPoint\n";
+	//		break;
+	//	default:
+	//		break;
+	//	}
+	//}
+
+	
 
 	return 0;
 }
