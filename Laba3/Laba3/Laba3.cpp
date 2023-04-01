@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
@@ -16,15 +17,16 @@ public:
 	void push_back(T data);
 	//добавить в начало списка
 	void push_front(T data);
-	void push_front(T* data);
 	//удалить элемент из начала списка
-	T pop_front();
+	void pop_front();
 	//удалить элемент из конца списка
 	void pop_back();
 	//вставить элемент 
 	void insert(T data, int index);
 	//удалить элементы по индексу
 	void remove(int index);
+	//Оператор квадратные скобки
+	T& operator[](const int index);
 	//Вернуть размер списка
 	int GetSize() {return Size;}
 
@@ -51,10 +53,11 @@ private:
 	int Size;
 	//"Голова" списка ( первый элемент )
 	Node <T>* Head;
+	Node <T>* Tail;
 };
 
 template<typename T>
-List<T>::List(): Size(0), Head(nullptr)
+List<T>::List(): Size(0), Head(nullptr), Tail(nullptr)
 { 
 	printf("List()\n");
 }
@@ -72,9 +75,7 @@ void List<T>::clear()
 {
 	while (Size) //пока Size != 0 вызывать pop_front, который удаляет элемент из начала и уменьшает Size на 1
 	{
-		T temp;
-		temp = pop_front();
-		delete temp;
+		pop_front();
 	}
 }
 
@@ -82,9 +83,11 @@ template<typename T>
 void List<T>::push_back(T data)
 {
 	//если головы нет, значит список пуст и создается нода-голова, в которую будут помещены данные
+	//Хвост равен голове, так как элемент один
 	if (Head == nullptr)
 	{
 		Head = new Node<T>(data);
+		Tail = Head;
 	}
 	//если голова есть: создаем временный указатель, чтобы пройтись по нодам и найти ноду, у которой указатель на след элемент равен nullptr
 	else 
@@ -97,13 +100,12 @@ void List<T>::push_back(T data)
 		}
 
 		current->pNext = new Node<T>(data);
+		Tail = current->pNext;
 	}
 
 	//увеличиваем size после добавления элемента
 	Size++;
 }
-
-
 
 template<typename T>
 void List<T>::push_front(T data)
@@ -115,33 +117,20 @@ void List<T>::push_front(T data)
 }
 
 template<typename T>
-void List<T>::push_front(T* data)
-{
-	Node<T>* NewNode = new Node<T>(data);
-	NewNode->pNext = Head;
-	Head = NewNode;
-	Size++;
-}
-
-template<typename T>
-T List<T>::pop_front()
+void List<T>::pop_front()
 {
 	if (Size == 0)
 	{
 		
 	}
+	else
 	else {
 		//создаем временный указатель, в который присваиваем указаетль head
 		Node<T>* temp = Head;
-		T temp_data = 0;
-		if (temp->data)
-			temp_data = temp->data;
 		//следующий элемент после head, становится head
 		Head = Head->pNext;
-		//удаляем указатель на дату;
 		//удаляем указатель на старый head
 		delete temp;
-		return temp_data;
 		//уменьшаем size после удаления элемента
 		Size--;
 	}
@@ -157,7 +146,7 @@ template<typename T>
 void List<T>::insert(T data, int index)
 {
 
-	if (Size == 0 || index - Size > 1) {
+	if (Size == 0 || index - Size >= 1 || index < 0) {
 
 	}
 	//если индекс 0, добавляем объект в начало
@@ -189,15 +178,19 @@ void List<T>::insert(T data, int index)
 template<typename T>
 void List<T>::remove(int index)
 {
-	if (Size == 0) {
+	//костыль, чтобы всё не ломалось, когда список пустой и вызывается метод remove
+	if (Head == nullptr || index - Size > -1 || index < 0) {
 
 	}
 	//если нужно удалить элемент по индексу ноль, вызываем фукнция pop_front()
-	else if (index == 0)
+	else if (index == 0 && Size > 1)
 	{
-		
 		 pop_front();
-		
+	}
+	else if (Size == 1) {
+		pop_front();
+		Head = nullptr;
+		Tail = nullptr;
 	}
 	else
 	{
@@ -209,14 +202,42 @@ void List<T>::remove(int index)
 			previous = previous->pNext;
 		}
 
-		//Указатель ToDelete указывает на элемент который нужно удалить, то есть следующий после элемента [index-1]
-		Node<T>* ToDelete = previous->pNext;
-		//меняем указатель pNext у previous на pNext->ToDelete, после чего pNext будет указывать на [index+1] элемент
-		previous->pNext = ToDelete->pNext;
+		if (previous->pNext == Tail)
+		{
+			Node<T>* TailDelete = Tail;
+			Tail = previous->pNext;
+			delete TailDelete;
+			Size--;
+		}
+		else {
+			//Указатель ToDelete указывает на элемент который нужно удалить, то есть следующий после элемента [index-1]
+			Node<T>* ToDelete = previous->pNext;
+			//меняем указатель pNext у previous на pNext->ToDelete, после чего pNext будет указывать на [index+1] элемент
+			previous->pNext = ToDelete->pNext;
+			delete ToDelete;
+			Size--;
+		}
+	}
+}
 
-		delete ToDelete->data;
-		delete ToDelete;
-		Size--;
+template<typename T>
+T& List<T>::operator[](const int index)
+{
+	//счетчик и нода с помощью которой будем итерироваться по циклу
+	int counter = 0;
+	Node<T>* current = this->Head;
+
+
+	while (current != nullptr) {
+		//проверяем равно ли значение счечтика значению индекса?
+		if (counter == index)
+		{
+			//если да то return data
+			return current->data;
+		}
+		//если нет то меням указатель current на следующий элемент списка и увеличиваем счечтик
+		current = current->pNext;
+		counter++;
 	}
 }
 
@@ -308,21 +329,47 @@ int main() {
 
 	//srand(time(NULL));
 
-	const int COUNT_POINTS = 10000;
+	time_t begin = time(NULL);
+
+	const int COUNT_TEST = 100;
+
+	List<int*> ints;
+
+	int rand_value;
+	for (int i = 0; i < COUNT_TEST; i++)
+	{
+		rand_value = rand() % 6;
+		switch (rand_value)
+		{
+		case 0:
+			ints.push_back(new int(rand() % 100));
+			break;
+		case 1:
+			ints.push_front(new int(rand() % 100));
+			break;
+		case 2:
+			ints.pop_back();
+			break;
+		case 3:
+			ints.pop_front();
+			break;
+		case 4:
+			ints.insert(new int(rand()%100), i);
+			break;
+		case 5:
+			ints.remove(i);
+			break;
+		default:
+			break;
+		}
+	}
 	
-	List<Point*> points;
-
-	Point* B = new ColoredPoint(1, 1,20);
-
-	points.push_back(B);
-	
-
-
-	/*int rand_value;
+	/*List<Point*> points;
+	int rand_value;
 	int rand_x;
 	int rand_y;
 	int rand_color;
-	for (int i = 0; i < COUNT_POINTS; i++)
+	for (int i = 0; i < COUNT_TEST; i++)
 	{
 		rand_value = rand() % 6;
 		rand_x = rand() % 100;
@@ -353,6 +400,10 @@ int main() {
 			break;
 		}
 	}*/
+
+	time_t end = time(NULL);
+
+	cout << "\nThe elapsed time is " << end - begin << endl;
 
 	return 0;
 }
