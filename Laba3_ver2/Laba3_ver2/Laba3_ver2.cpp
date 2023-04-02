@@ -117,7 +117,7 @@ public:
 
         if (index < 0 || index - GetSize() > 0)
         {
-
+            return;
         }
         else if (index == 0 || Head == nullptr)
         {
@@ -152,9 +152,6 @@ public:
         {
             return pop_front();
         }
-        //else if (index == GetSize()) {
-        //    push_back(data);
-        //}
         else {
             //Находим элемент, который предшествует элементу с индексом, по которому нужно вставить новый элемент.
             Node<T>* previous = this->Head;
@@ -287,9 +284,9 @@ int main()
     List<Point*> PointList;
     Point* toDeletePoint;
     time_t begin = time(NULL);
-    const int LIST_SIZE = 1000;
+    const int LIST_SIZE = 10000;
     int SwitchRand;
-    for (size_t i = 0; i < LIST_SIZE; i++)
+    for (int i = 0; i < LIST_SIZE; i++)
     {
         SwitchRand = rand() % 5;
         switch (SwitchRand)
