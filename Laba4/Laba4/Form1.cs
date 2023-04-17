@@ -61,11 +61,6 @@ namespace Laba4
                     _g.FillEllipse(Brushes.Yellow, x - 25, y - 25, radius, radius);
                 }
             }
-            public void Easier(Graphics _g)
-            {
-                _g.DrawEllipse(Pens.White, x - 25, y - 25, radius, radius);
-                _g.FillEllipse(Brushes.White, x - 25, y - 25, radius, radius);
-            }
 
 
         }
@@ -122,6 +117,7 @@ namespace Laba4
                     }
                 }
             }
+            
             if (!flag)
             {
                 CCircle newCircle = new CCircle(e.X, e.Y);
@@ -183,7 +179,6 @@ namespace Laba4
                 {
                     if (c.isSelect())
                     {
-                        c.Easier(g);
                         deleteCircles.Add(c);
                     }
                 }
@@ -191,10 +186,14 @@ namespace Laba4
                 {
                     Circles.Remove(c);
                 }
+                g.Clear(Color.White);
                 if (Circles.Count > 0)
                 {
                     Circles[Circles.Count - 1].CircleSelect();
-                    Circles[Circles.Count - 1].Draw(g);
+                    foreach(CCircle c in Circles)
+                    {
+                        c.Draw(g);
+                    }
                 }
             }
 
