@@ -1,0 +1,89 @@
+namespace Laba4._2
+{
+    public partial class Form1 : Form
+    {
+        Model model;
+        public Form1()
+        {
+            InitializeComponent();
+            model = new Model();
+            model.observers += new System.EventHandler(this.UpdateFromModel);
+        }
+        private void UpdateFromModel(object sender, EventArgs e)
+        {
+            textBoxA.Text = model.getValueA().ToString();
+            textBoxB.Text = model.getValueB().ToString();
+            textBoxC.Text = model.getValueC().ToString();
+        }
+
+        private void textBoxA__KeyDown(object sender, EventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                model.setValueA(Convert.ToInt32(textBoxA.Text));
+            }
+        }
+
+        private void textBoxB__KeyDown(object sender, EventArgs e)
+        {
+            model.setValueB(Convert.ToInt32(textBoxB.Text));
+        }
+
+        private void textBoxC__KeyDown(object sender, EventArgs e)
+        {
+            model.setValueC(Convert.ToInt32(textBoxC.Text));
+        }
+
+
+    }
+
+    public class Model
+    {
+        private int A, B, C;
+        public System.EventHandler observers;
+
+        public void setValueA(int valueA)
+        {
+            if (valueA > B)
+            {
+                B = valueA;
+            }
+            this.A = valueA;
+            observers.Invoke(this, null);
+        }
+        public int getValueA()
+        {
+            return this.A;
+        }
+        public void setValueB(int valueB)
+        {
+            if (valueB < A)
+            {
+                valueB = A;
+            }
+            if (valueB > C)
+            {
+                valueB = C;
+            }
+            this.B = valueB;
+            observers.Invoke(this, null);
+        }
+        public int getValueB()
+        {
+            return this.B;
+        }
+        public void setValueC(int valueC)
+        {
+            if (valueC < B)
+            {
+                B = valueC;
+            }
+            this.C = valueC;
+            observers.Invoke(this, null);
+        }
+        public int getValueC()
+        {
+            return this.C;
+        }
+    }
+}
