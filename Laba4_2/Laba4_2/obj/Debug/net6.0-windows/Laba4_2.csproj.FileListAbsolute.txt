@@ -1,0 +1,17 @@
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\bin\Debug\net6.0-windows\Laba4_2.exe
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\bin\Debug\net6.0-windows\Laba4_2.deps.json
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\bin\Debug\net6.0-windows\Laba4_2.runtimeconfig.json
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\bin\Debug\net6.0-windows\Laba4_2.dll
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\bin\Debug\net6.0-windows\Laba4_2.pdb
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.csproj.AssemblyReference.cache
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.Form1.resources
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.csproj.GenerateResource.cache
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.GeneratedMSBuildEditorConfig.editorconfig
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.AssemblyInfoInputs.cache
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.AssemblyInfo.cs
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.csproj.CoreCompileInputs.cache
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.dll
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\refint\Laba4_2.dll
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.pdb
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\Laba4_2.genruntimeconfig.cache
+D:\USATU\OOP\OOP_Labs\Laba4_2\Laba4_2\obj\Debug\net6.0-windows\ref\Laba4_2.dll
