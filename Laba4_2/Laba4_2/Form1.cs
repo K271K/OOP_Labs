@@ -38,13 +38,14 @@ namespace Laba4_2
             //Если пользователь нажал Enter  
             if (e.KeyCode == Keys.Enter)
             {
-                model.setValueA(textBoxA.Text);
+                model.setValueA(Int32.TryParse(textBoxA.Text));
             }
-
+            
         }
         private void textBoxB_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+                
             {
                 model.setValueB(textBoxB.Text);
             }
@@ -53,6 +54,7 @@ namespace Laba4_2
         {
             if (e.KeyCode == Keys.Enter)
             {
+
                 model.setValueC(textBoxС.Text);
             }
         }
