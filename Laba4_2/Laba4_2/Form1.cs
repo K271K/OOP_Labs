@@ -23,138 +23,87 @@ namespace Laba4_2
             trackBarB.Value = model.getValueB();
             trackBarC.Value = model.getValueC();
         }
-        //Функция создания файлов с данными из модели
-        void CreateFile(string data, string path)
+        private void textBoxes_KeyDown(object sender, KeyEventArgs e)
         {
-            if (data.Count() > 1)
+            if (e.KeyCode == Keys.Enter)
             {
-                File.WriteAllText(path, data);
+                int valueCheck;
+                if (sender == textBoxA)
+                {
+                    Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                    model.setValueA(valueCheck);
+                }
+                if (sender == textBoxB)
+                {
+                    Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                    model.setValueB(valueCheck);
+                }
+                if (sender == textBoxС)
+                {
+                    Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                    model.setValueC(valueCheck);
+                }
             }
         }
-        //Функция проверки строки на корректность. Если только цифр -- true, если есть что-то кроме цифр -- false
+        private void textBoxes_Leave(object sender, EventArgs e)
+        {
+            int valueCheck;
+            if (sender == textBoxA)
+            {
+                Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                model.setValueA(valueCheck);
+            }
+            if (sender == textBoxB)
+            {
+                Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                model.setValueB(valueCheck);
+            }
+            if (sender == textBoxС)
+            {
+                Int32.TryParse((sender as TextBox).Text, out valueCheck);
+                model.setValueC(valueCheck);
+            }
+        }
 
-        private void textBoxA_KeyDown(object sender, KeyEventArgs e)
+        private void NumericUpDowns_ValueChanged(object sender, EventArgs e)
         {
-            //Если пользователь нажал Enter  
-            if (e.KeyCode == Keys.Enter)
+            if (sender == numericUpDownA)
             {
-                model.setValueA(Int32.TryParse(textBoxA.Text));
+                model.setValueA(Decimal.ToInt32((sender as NumericUpDown).Value));
             }
-            
-        }
-        private void textBoxB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                
+            if (sender == numericUpDownB)
             {
-                model.setValueB(textBoxB.Text);
+                model.setValueB(Decimal.ToInt32((sender as NumericUpDown).Value));
+            }
+            if (sender == numericUpDownC)
+            {
+                model.setValueC(Decimal.ToInt32((sender as NumericUpDown).Value));
             }
         }
-        private void textBoxC_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
 
-                model.setValueC(textBoxС.Text);
-            }
-        }
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void trackBars_Scroll(object sender, EventArgs e)
         {
-            CreateFile(model.getValueA().ToString(), "TextBoxA_Data.txt");
-            CreateFile(model.getValueB().ToString(), "TextBoxB_Data.txt");
-            CreateFile(model.getValueC().ToString(), "TextBoxC_Data.txt");
+            if (sender == trackBarA)
+            {
+                model.setValueA(Decimal.ToInt32((sender as TrackBar).Value));
+            }
+            if (sender == trackBarB)
+            {
+                model.setValueB(Decimal.ToInt32((sender as TrackBar).Value));
+            }
+            if (sender == trackBarC)
+            {
+                model.setValueC(Decimal.ToInt32((sender as TrackBar).Value));
+            }
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (File.Exists("TextBoxA_Data.txt"))
-            {
-                string valueA = File.ReadAllText("TextBoxA_Data.txt");
-                model.setValueA(valueA);
-
-            }
-            if (File.Exists("TextBoxC_Data.txt"))
-            {
-                string valueC = File.ReadAllText("TextBoxC_Data.txt");
-                model.setValueC(valueC);
-
-            }
-            if (File.Exists("TextBoxB_Data.txt"))
-            {
-                string valueB = File.ReadAllText("TextBoxB_Data.txt");
-                model.setValueB(valueB);
-
-            }
-            model.observers.Invoke(model, null);
+            UpdateFromModel(model, EventArgs.Empty);
         }
 
-        private void textBoxA_Leave_1(object sender, EventArgs e)
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            model.setValueA(textBoxA.Text);
-        }
-
-        private void textBoxB_Leave(object sender, EventArgs e)
-        {
-            model.setValueB(textBoxB.Text);
-        }
-
-        private void textBoxС_Leave(object sender, EventArgs e)
-        {
-            model.setValueC(textBoxС.Text);
-        }
-
-        private void numericUpDownA_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                model.setValueA(Decimal.ToInt32(numericUpDownA.Value));
-        }
-
-        private void numericUpDownB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                model.setValueB(Decimal.ToInt32(numericUpDownB.Value));
-        }
-
-        private void numericUpDownC_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-                model.setValueC(Decimal.ToInt32(numericUpDownC.Value));
-        }
-
-        private void numericUpDownA_ValueChanged(object sender, EventArgs e)
-        {
-            model.setValueA(Decimal.ToInt32(numericUpDownA.Value));
-        }
-
-        private void numericUpDownB_ValueChanged(object sender, EventArgs e)
-        {
-            model.setValueB(Decimal.ToInt32(numericUpDownB.Value));
-        }
-
-        private void numericUpDownC_ValueChanged(object sender, EventArgs e)
-        {
-            model.setValueC(Decimal.ToInt32(numericUpDownC.Value));
-        }
-
-        private void trackBarA_Scroll(object sender, EventArgs e)
-        {
-            model.setValueA(Decimal.ToInt32(trackBarA.Value));
-        }
-
-        private void trackBarB_Scroll(object sender, EventArgs e)
-        {
-            model.setValueB(Decimal.ToInt32(trackBarB.Value));
-        }
-
-        private void trackBarC_Scroll(object sender, EventArgs e)
-        {
-            model.setValueC(Decimal.ToInt32(trackBarC.Value));
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            int a;
-            a = Int32.Parse("1234");
-            label1.Text = a.ToString();
+            model.Model_Destruct();
         }
     }
     class Model
@@ -162,76 +111,68 @@ namespace Laba4_2
         private int A, B, C;
         public System.EventHandler observers;
 
-        private bool StringCorrect(string value)
+        public Model()
         {
-            //Проверка нет ли среди введенных данных чего-либо кроме цифр
-            //Прохожусь по каждой букве в textBox и если там есть что-то крооме цифры, делаю флаг тру.
-            foreach (char c in value)
-            {
-                if (Char.IsDigit(c))
-                {
-                    //если введена цифра, то все норм
-                }
-                else
-                {
-                    //если нашли  не цифру, то меняем флаг и заканчиваем цикл
-                    return false;
-                    break;
-                }
-            }
-            return true;
+            observers?.Invoke(this, null);
+
+            string line;
+            int CheckA, CheckB, CheckC;
+            StreamReader sr = new StreamReader("ModelData.txt");
+
+            line = sr.ReadLine();
+            Int32.TryParse(line, out CheckA);
+            if (CheckA < 0 || CheckA > 100)
+                this.A = 0;
+            else
+                this.A = CheckA;
+
+
+
+            line = sr.ReadLine();
+            Int32.TryParse(line, out CheckB);
+            if (CheckB < 0 || CheckB > 100)
+                this.B = 0;
+            else
+                this.B = CheckB;
+
+            line = sr.ReadLine();
+            Int32.TryParse(line, out CheckC);
+            if (CheckC < 0 || CheckC > 100)
+                this.C = 0;
+            else
+                this.C = CheckC;
+
+            sr.Close();
+
         }
-        public void setValueA(string valueA_str)
+        public void Model_Destruct()
         {
-            if (StringCorrect(valueA_str))
-            {
-                int valueA;
-                valueA = Int32.Parse(valueA_str);
-                if (valueA > 100)
-                {
-                    valueA = A;
-                }
-                if (valueA < 0)
-                {
-                    valueA = A;
-                }
-                if (valueA > B)
-                {
-                    B = valueA;
-                }
-                if (valueA > C)
-                {
-                    C = valueA;
-                }
-                this.A = valueA;
-                observers.Invoke(this, null);
-            }
-            else observers.Invoke(this, null);
+            StreamWriter sw = new StreamWriter("ModelData.txt");
+            sw.WriteLine(A);
+            sw.WriteLine(B);
+            sw.WriteLine(C);
+            sw.Close();
         }
         public void setValueA(int valueA)
         {
-            if (StringCorrect(valueA.ToString()))
+            if (valueA > 100)
             {
-                if (valueA > 100)
-                {
-                    valueA = A;
-                }
-                if (valueA < 0)
-                {
-                    valueA = A;
-                }
-                if (valueA > B)
-                {
-                    B = valueA;
-                }
-                if (valueA > C)
-                {
-                    C = valueA;
-                }
-                this.A = valueA;
-                observers.Invoke(this, null);
+                valueA = A;
             }
-            else return;
+            if (valueA < 0)
+            {
+                valueA = A;
+            }
+            if (valueA > B)
+            {
+                B = valueA;
+            }
+            if (valueA > C)
+            {
+                C = valueA;
+            }
+            this.A = valueA;
+            observers.Invoke(this, null);
         }
         public int getValueA()
         {
@@ -239,109 +180,49 @@ namespace Laba4_2
         }
         public void setValueB(int valueB)
         {
-            if (StringCorrect(valueB.ToString()))
+            if (valueB > 100)
             {
-                if (valueB > 100)
-                {
-                    valueB = B;
-                }
-                if (valueB < 0)
-                {
-                    valueB = B;
-                }
-                if (valueB < A)
-                {
-                    valueB = A;
-                }
-                if (valueB > C)
-                {
-                    valueB = C;
-                }
-                this.B = valueB;
-                observers.Invoke(this, null);
+                valueB = B;
             }
-            else return;
-        }
-        public void setValueB(string valueB_str)
-        {
-            if (StringCorrect(valueB_str))
+            if (valueB < 0)
             {
-                int valueB = Int32.Parse(valueB_str);
-                if (valueB > 100)
-                {
-                    valueB = B;
-                }
-                if (valueB < 0)
-                {
-                    valueB = B;
-                }
-                if (valueB < A)
-                {
-                    valueB = A;
-                }
-                if (valueB > C)
-                {
-                    valueB = C;
-                }
-                this.B = valueB;
-                observers.Invoke(this, null);
+                valueB = B;
             }
-            else observers.Invoke(this, null);
+            if (valueB < A)
+            {
+                valueB = A;
+            }
+            if (valueB > C)
+            {
+                valueB = C;
+            }
+            this.B = valueB;
+            observers.Invoke(this, null);
         }
         public int getValueB()
         {
             return this.B;
         }
-        public void setValueC(string valueC_str)
-        {
-            if (StringCorrect(valueC_str))
-            {
-                int valueC = Int32.Parse(valueC_str);
-                if (valueC > 100)
-                {
-                    valueC = C;
-                }
-                if (valueC < 0)
-                {
-                    valueC = C;
-                }
-                if (valueC < B)
-                {
-                    B = valueC;
-                }
-                if (valueC < A)
-                {
-                    A = valueC;
-                }
-                this.C = valueC;
-                observers.Invoke(this, null);
-            }
-            else observers.Invoke(this, null);
-        }
         public void setValueC(int valueC)
         {
-            if (StringCorrect(valueC.ToString()))
+            if (valueC > 100)
             {
-                if (valueC > 100)
-                {
-                    valueC = C;
-                }
-                if (valueC < 0)
-                {
-                    valueC = C;
-                }
-                if (valueC < B)
-                {
-                    B = valueC;
-                }
-                if (valueC < A)
-                {
-                    A = valueC;
-                }
-                this.C = valueC;
-                observers.Invoke(this, null);
+                valueC = C;
             }
-            else return;
+            if (valueC < 0)
+            {
+                valueC = C;
+            }
+            if (valueC < B)
+            {
+                B = valueC;
+            }
+            if (valueC < A)
+            {
+                A = valueC;
+            }
+            this.C = valueC;
+            observers.Invoke(this, null);
         }
         public int getValueC()
         {

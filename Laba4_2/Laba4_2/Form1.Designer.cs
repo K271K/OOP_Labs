@@ -42,7 +42,6 @@
             trackBarA = new TrackBar();
             trackBarB = new TrackBar();
             trackBarC = new TrackBar();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDownA).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownB).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownC).BeginInit();
@@ -57,8 +56,8 @@
             textBoxA.Name = "textBoxA";
             textBoxA.Size = new Size(147, 23);
             textBoxA.TabIndex = 0;
-            textBoxA.KeyDown += textBoxA_KeyDown;
-            textBoxA.Leave += textBoxA_Leave_1;
+            textBoxA.KeyDown += textBoxes_KeyDown;
+            textBoxA.Leave += textBoxes_Leave;
             // 
             // textBoxB
             // 
@@ -66,8 +65,8 @@
             textBoxB.Name = "textBoxB";
             textBoxB.Size = new Size(147, 23);
             textBoxB.TabIndex = 1;
-            textBoxB.KeyDown += textBoxB_KeyDown;
-            textBoxB.Leave += textBoxB_Leave;
+            textBoxB.KeyDown += textBoxes_KeyDown;
+            textBoxB.Leave += textBoxes_Leave;
             // 
             // textBoxС
             // 
@@ -75,8 +74,8 @@
             textBoxС.Name = "textBoxС";
             textBoxС.Size = new Size(147, 23);
             textBoxС.TabIndex = 2;
-            textBoxС.KeyDown += textBoxC_KeyDown;
-            textBoxС.Leave += textBoxС_Leave;
+            textBoxС.KeyDown += textBoxes_KeyDown;
+            textBoxС.Leave += textBoxes_Leave;
             // 
             // labelA
             // 
@@ -134,8 +133,7 @@
             numericUpDownA.Name = "numericUpDownA";
             numericUpDownA.Size = new Size(147, 23);
             numericUpDownA.TabIndex = 5;
-            numericUpDownA.ValueChanged += numericUpDownA_ValueChanged;
-            numericUpDownA.KeyDown += numericUpDownA_KeyDown;
+            numericUpDownA.ValueChanged += NumericUpDowns_ValueChanged;
             // 
             // numericUpDownB
             // 
@@ -143,8 +141,7 @@
             numericUpDownB.Name = "numericUpDownB";
             numericUpDownB.Size = new Size(147, 23);
             numericUpDownB.TabIndex = 5;
-            numericUpDownB.ValueChanged += numericUpDownB_ValueChanged;
-            numericUpDownB.KeyDown += numericUpDownB_KeyDown;
+            numericUpDownB.ValueChanged += NumericUpDowns_ValueChanged;
             // 
             // numericUpDownC
             // 
@@ -152,8 +149,7 @@
             numericUpDownC.Name = "numericUpDownC";
             numericUpDownC.Size = new Size(147, 23);
             numericUpDownC.TabIndex = 5;
-            numericUpDownC.ValueChanged += numericUpDownC_ValueChanged;
-            numericUpDownC.KeyDown += numericUpDownC_KeyDown;
+            numericUpDownC.ValueChanged += NumericUpDowns_ValueChanged;
             // 
             // trackBarA
             // 
@@ -162,7 +158,7 @@
             trackBarA.Name = "trackBarA";
             trackBarA.Size = new Size(147, 45);
             trackBarA.TabIndex = 6;
-            trackBarA.Scroll += trackBarA_Scroll;
+            trackBarA.Scroll += trackBars_Scroll;
             // 
             // trackBarB
             // 
@@ -171,7 +167,7 @@
             trackBarB.Name = "trackBarB";
             trackBarB.Size = new Size(147, 45);
             trackBarB.TabIndex = 6;
-            trackBarB.Scroll += trackBarB_Scroll;
+            trackBarB.Scroll += trackBars_Scroll;
             // 
             // trackBarC
             // 
@@ -180,24 +176,13 @@
             trackBarC.Name = "trackBarC";
             trackBarC.Size = new Size(147, 45);
             trackBarC.TabIndex = 6;
-            trackBarC.Scroll += trackBarC_Scroll;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(176, 42);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 7;
-            label1.Text = "label1";
-            label1.Click += label1_Click;
+            trackBarC.Scroll += trackBars_Scroll;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1159, 637);
-            Controls.Add(label1);
             Controls.Add(trackBarC);
             Controls.Add(trackBarB);
             Controls.Add(trackBarA);
@@ -247,6 +232,5 @@
         private TrackBar trackBarA;
         private TrackBar trackBarB;
         private TrackBar trackBarC;
-        private Label label1;
     }
 }
