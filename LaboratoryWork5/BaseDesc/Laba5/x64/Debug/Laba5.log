@@ -1,0 +1,19 @@
+﻿  Laba5.cpp
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(91,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(91,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(94,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(94,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,1): warning C4311: приведение типов: усечение указателя из "const Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,1): warning C4302: приведение типов: усечение из "const Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,94): warning C4474: "printf" : для строки формата передано слишком много аргументов
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(98,94): message : заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 3
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(106,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(106,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+  NonVirtual.cpp
+  Создание кода...
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(173): warning C4172: возвращение адреса локальной или временной переменной : A
+D:\USATU\OOP\OOP_Labs\Laba5\Laba5\Laba5.cpp(181): warning C4172: возвращение адреса локальной или временной переменной : A
+NonVirtual.obj : error LNK2005: "void __cdecl main1(void)" (?main1@@YAXXZ) уже определен в Laba5.obj
+D:\USATU\OOP\OOP_Labs\Laba5\x64\Debug\Laba5.exe : fatal error LNK1169: обнаружен многократно определенный символ - один или более
