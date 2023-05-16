@@ -167,8 +167,8 @@ int main()
 	//		static_cast<Car*>(garage[i])->FlipFlop();
 	//}
 
-	Transport* Toyota = new Car();
+	/*Transport* Toyota = new Car();
 	Toyota->method1();
-	delete Toyota;
+	delete Toyota;*/
 }
 
