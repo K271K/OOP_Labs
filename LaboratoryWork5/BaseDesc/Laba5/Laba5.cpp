@@ -55,6 +55,9 @@ public:
 		this->name = obj->name;
 		printf("%d Desc(Desc* obj) name=\"%s\" from object #%d\n", int(this) % 1000, name.c_str(), (int)obj % 1000);
 	};
+	void DescCheck() {
+		printf("It's a Desc\n");
+	}
 	virtual ~Desc() {
 		printf("#%d ~Desc() name=\"%s\"\n", (int)this % 1000, name.c_str());
 	}
@@ -63,9 +66,14 @@ public:
 //С помощью конструктора копирования создается локальная копия внутри функции и после выхода из функции она удаляется.
 void in1(Base obj) {
 	printf("Inside func1\n");
+	//Преобразование указателя Base на указатель Desc внутри функции
+	/*Desc* c = dynamic_cast<Desc*>(&obj);
+	if (c != nullptr)
+		c->DescCheck();*/
 };
 void in2(Base* obj) {
 	printf("Inside func2\n");
+	
 };
 void in3(Base& obj) {
 	printf("Inside func3\n");
@@ -127,4 +135,5 @@ int main()	{
 	in3(*po);
 	cout << "After func3(*po)\n";
 	delete po;*/
+
 }
