@@ -28,6 +28,9 @@ public:
 		this->name = obj->name;
 		printf("%d Base(Base* obj) name=\"%s\" from object #%d\n", int(this) % 1000, name.c_str(), (int)obj % 1000);	
 	};
+	void PrintName() {
+		printf("I'm a Base!\n");
+	}
 	virtual ~Base() {
 		printf("#%d ~Base() name=\"%s\"\n", (int)this % 1000, name.c_str());
 	}
@@ -78,6 +81,41 @@ void in2(Base* obj) {
 void in3(Base& obj) {
 	printf("Inside func3\n");
 };
+
+//Создает локальный объект внутри и он копируется;
+Base out1() {
+	Base o("out1()");
+	return o;
+}
+//Утечка памяти. Созданный внутри функции динамический объект не удаляется.
+Base out2() {
+	Base* o = new Base("out2()");
+	return *o;
+}
+//Обращение к чужой памяти. Перед выходом из функции локальный объект удаляется и в main возвращается удаленный объект
+Base* out3() {
+	Base o("out3()");
+	return &o;
+}
+//Созданный внутри дин объект и его адрес из функции возвращаются в main и помещаются в перменную
+Base* out4() {
+	Base* o = new Base("out4()");
+	return o;
+}
+//Тест unique_ptr
+unique_ptr<Base> out44() {
+	return make_unique<Base>("out44");
+}
+//Локальный объект удаляет перед выходом из функции
+Base& out5() {
+	Base o("out5()");
+	return o;
+}
+//Проблема с удалением объекта, ссылки не удаляют объекты, на которые указывают
+Base& out6() {
+	Base* o = new Base("out6()");
+	return *o;
+}
 
 
 
@@ -135,5 +173,30 @@ int main()	{
 	in3(*po);
 	cout << "After func3(*po)\n";
 	delete po;*/
+
+	//ПОРЕШАТЬ С ПОМОЩЬЮ UNIQUE_PTR<>
+	/*Base* o4 = out4();
+	delete o4;*/
+	//unique_ptr<Base> o44 = out44();
+
+	//Наглядный пример, почему o5 плохая
+	/*Base o5 = out5();
+	o5.PrintName();*/
+
+	Base o1 = out1();
+	Base o1;
+	o1 = out1();
+
+	Base o2 = out2();
+	Base o2;
+	o2 = out2();
+
+	Base* o3 = out3();
+
+	Base* o4 = out4();
+
+	Base& o5 = out5();
+
+	Base& o6 = out6();
 
 }
