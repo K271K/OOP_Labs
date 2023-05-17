@@ -1,0 +1,38 @@
+﻿  Laba5.cpp
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(14,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(14,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(19,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(19,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(24,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(24,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(24,1): warning C4311: приведение типов: усечение указателя из "const Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(24,1): warning C4302: приведение типов: усечение из "const Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(29,1): warning C4311: <function-style-cast>: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(29,1): warning C4302: <function-style-cast>: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(29,1): warning C4311: приведение типов: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(29,1): warning C4302: приведение типов: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(35,1): warning C4311: приведение типов: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(35,1): warning C4302: приведение типов: усечение из "Base *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(44,1): warning C4311: <function-style-cast>: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(44,1): warning C4302: <function-style-cast>: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(49,1): warning C4311: <function-style-cast>: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(49,1): warning C4302: <function-style-cast>: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(54,1): warning C4311: <function-style-cast>: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(54,1): warning C4302: <function-style-cast>: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(54,1): warning C4311: приведение типов: усечение указателя из "const Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(54,1): warning C4302: приведение типов: усечение из "const Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(59,1): warning C4311: <function-style-cast>: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(59,1): warning C4302: <function-style-cast>: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(59,1): warning C4311: приведение типов: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(59,1): warning C4302: приведение типов: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(65,1): warning C4311: приведение типов: усечение указателя из "Desc *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(65,1): warning C4302: приведение типов: усечение из "Desc *" к "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(199,80): warning C4311: приведение типов: усечение указателя из "Base *" в "int"
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(199,80): warning C4302: приведение типов: усечение из "Base *" к "int"
+  Создание кода
+  30 of 91 functions (33.0%) were compiled, the rest were copied from previous compilation.
+    9 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
+D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\Laba5\Laba5.cpp(98): warning C4172: возвращение адреса локальной или временной переменной : o
+  Создание кода завершено
+  Laba5.vcxproj -> D:\USATU\OOP\OOP_Labs\Laba5\BaseDesc\x64\Release\Laba5.exe
