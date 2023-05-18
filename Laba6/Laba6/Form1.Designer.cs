@@ -28,93 +28,89 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
-            textBox1 = new TextBox();
+            pictureBox1 = new PictureBox();
+            figureGroupBox = new GroupBox();
+            buttonTriangle = new Button();
+            buttonSquare = new Button();
+            buttonCircle = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            figureGroupBox.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // pictureBox1
             // 
-            panel1.Location = new Point(-1, 113);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1208, 525);
-            panel1.TabIndex = 0;
-            panel1.Click += panel1_Click;
+            pictureBox1.BackColor = SystemColors.ControlLightLight;
+            pictureBox1.Dock = DockStyle.Left;
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(916, 637);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Paint += pictureBox1_Paint;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
             // 
-            // button1
+            // figureGroupBox
             // 
-            button1.Location = new Point(102, 38);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 1;
-            button1.Text = "Add1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            figureGroupBox.Controls.Add(buttonTriangle);
+            figureGroupBox.Controls.Add(buttonSquare);
+            figureGroupBox.Controls.Add(buttonCircle);
+            figureGroupBox.Location = new Point(943, 12);
+            figureGroupBox.Name = "figureGroupBox";
+            figureGroupBox.Size = new Size(252, 100);
+            figureGroupBox.TabIndex = 1;
+            figureGroupBox.TabStop = false;
+            figureGroupBox.Text = "Figures";
             // 
-            // button2
+            // buttonTriangle
             // 
-            button2.Location = new Point(199, 38);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 2;
-            button2.Text = "Add2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonTriangle.Location = new Point(87, 22);
+            buttonTriangle.Name = "buttonTriangle";
+            buttonTriangle.Size = new Size(75, 23);
+            buttonTriangle.TabIndex = 2;
+            buttonTriangle.Text = "Triangle";
+            buttonTriangle.UseVisualStyleBackColor = true;
+            buttonTriangle.Click += buttonFigure_Click;
             // 
-            // button3
+            // buttonSquare
             // 
-            button3.Location = new Point(298, 38);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 3;
-            button3.Text = "Add3";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            buttonSquare.Location = new Point(168, 22);
+            buttonSquare.Name = "buttonSquare";
+            buttonSquare.Size = new Size(75, 23);
+            buttonSquare.TabIndex = 1;
+            buttonSquare.Text = "Square";
+            buttonSquare.UseVisualStyleBackColor = true;
+            buttonSquare.Click += buttonFigure_Click;
             // 
-            // button4
+            // buttonCircle
             // 
-            button4.Location = new Point(417, 38);
-            button4.Name = "button4";
-            button4.Size = new Size(75, 23);
-            button4.TabIndex = 4;
-            button4.Text = "pop";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(691, 46);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(504, 23);
-            textBox1.TabIndex = 5;
+            buttonCircle.Location = new Point(6, 22);
+            buttonCircle.Name = "buttonCircle";
+            buttonCircle.Size = new Size(75, 23);
+            buttonCircle.TabIndex = 0;
+            buttonCircle.Text = "Circle";
+            buttonCircle.UseVisualStyleBackColor = true;
+            buttonCircle.Click += buttonFigure_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1207, 637);
-            Controls.Add(textBox1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(panel1);
+            Controls.Add(figureGroupBox);
+            Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            figureGroupBox.ResumeLayout(false);
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
-        private Panel panel1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
-        private TextBox textBox1;
+        private PictureBox pictureBox1;
+        private GroupBox figureGroupBox;
+        private Button buttonTriangle;
+        private Button buttonSquare;
+        private Button buttonCircle;
     }
 }
