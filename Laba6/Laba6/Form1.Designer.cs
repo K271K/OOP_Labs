@@ -33,8 +33,16 @@
             buttonTriangle = new Button();
             buttonSquare = new Button();
             buttonCircle = new Button();
+            colorDialog1 = new ColorDialog();
+            buttonRed = new Button();
+            colorGroupBox = new GroupBox();
+            AnyColorButton = new Button();
+            buttonBlue = new Button();
+            buttonYellow = new Button();
+            buttonGreen = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             figureGroupBox.SuspendLayout();
+            colorGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -91,17 +99,83 @@
             buttonCircle.UseVisualStyleBackColor = true;
             buttonCircle.Click += buttonFigure_Click;
             // 
+            // buttonRed
+            // 
+            buttonRed.BackColor = Color.Red;
+            buttonRed.Location = new Point(11, 21);
+            buttonRed.Name = "buttonRed";
+            buttonRed.Size = new Size(30, 30);
+            buttonRed.TabIndex = 2;
+            buttonRed.UseVisualStyleBackColor = false;
+            buttonRed.Click += ColorButton_Click;
+            // 
+            // colorGroupBox
+            // 
+            colorGroupBox.Controls.Add(AnyColorButton);
+            colorGroupBox.Controls.Add(buttonBlue);
+            colorGroupBox.Controls.Add(buttonYellow);
+            colorGroupBox.Controls.Add(buttonGreen);
+            colorGroupBox.Controls.Add(buttonRed);
+            colorGroupBox.Location = new Point(943, 144);
+            colorGroupBox.Name = "colorGroupBox";
+            colorGroupBox.Size = new Size(252, 100);
+            colorGroupBox.TabIndex = 3;
+            colorGroupBox.TabStop = false;
+            colorGroupBox.Text = "Color";
+            // 
+            // AnyColorButton
+            // 
+            AnyColorButton.BackColor = SystemColors.ActiveBorder;
+            AnyColorButton.Location = new Point(155, 22);
+            AnyColorButton.Name = "AnyColorButton";
+            AnyColorButton.Size = new Size(30, 30);
+            AnyColorButton.TabIndex = 2;
+            AnyColorButton.UseVisualStyleBackColor = false;
+            AnyColorButton.Click += AnyColorButton_Click;
+            // 
+            // buttonBlue
+            // 
+            buttonBlue.BackColor = Color.Blue;
+            buttonBlue.Location = new Point(119, 22);
+            buttonBlue.Name = "buttonBlue";
+            buttonBlue.Size = new Size(30, 30);
+            buttonBlue.TabIndex = 2;
+            buttonBlue.UseVisualStyleBackColor = false;
+            buttonBlue.Click += ColorButton_Click;
+            // 
+            // buttonYellow
+            // 
+            buttonYellow.BackColor = Color.Yellow;
+            buttonYellow.Location = new Point(83, 22);
+            buttonYellow.Name = "buttonYellow";
+            buttonYellow.Size = new Size(30, 30);
+            buttonYellow.TabIndex = 2;
+            buttonYellow.UseVisualStyleBackColor = false;
+            buttonYellow.Click += ColorButton_Click;
+            // 
+            // buttonGreen
+            // 
+            buttonGreen.BackColor = Color.Green;
+            buttonGreen.Location = new Point(47, 21);
+            buttonGreen.Name = "buttonGreen";
+            buttonGreen.Size = new Size(30, 30);
+            buttonGreen.TabIndex = 2;
+            buttonGreen.UseVisualStyleBackColor = false;
+            buttonGreen.Click += ColorButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1207, 637);
+            Controls.Add(colorGroupBox);
             Controls.Add(figureGroupBox);
             Controls.Add(pictureBox1);
             Name = "Form1";
             Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             figureGroupBox.ResumeLayout(false);
+            colorGroupBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -112,5 +186,12 @@
         private Button buttonTriangle;
         private Button buttonSquare;
         private Button buttonCircle;
+        private ColorDialog colorDialog1;
+        private Button buttonRed;
+        private GroupBox colorGroupBox;
+        private Button AnyColorButton;
+        private Button buttonBlue;
+        private Button buttonYellow;
+        private Button buttonGreen;
     }
 }

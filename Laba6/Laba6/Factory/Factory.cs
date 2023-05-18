@@ -8,12 +8,9 @@ using Laba6.Figures;
 namespace Laba6.Factory
 {
 
-    internal class CShapeFactory
+    internal abstract class CShapeFactory
     {
-        public virtual CShape createShape(char code)
-        {
-            return null;
-        }
+        public abstract CShape createShape(string code, int x, int y, int size, Color color);
 
     }
 }

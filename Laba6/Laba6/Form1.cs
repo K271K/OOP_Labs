@@ -1,3 +1,4 @@
+using Laba6.Factory;
 using Laba6.Figures;
 
 namespace Laba6
@@ -5,7 +6,9 @@ namespace Laba6
     public partial class Form1 : Form
     {
         MyList<CShape> Figures = new MyList<CShape>();
+        CMyShapeFactory Factory = new CMyShapeFactory();
         public string choosenFigure;
+        Color ChosenColor;
         public Form1()
         {
             InitializeComponent();
@@ -27,21 +30,8 @@ namespace Laba6
             }
             if (isNew)
             {
-                if (choosenFigure == "Circle")
-                {
-                    CShape c = new CCircle(e.X, e.Y, 50, Color.Blue);
-                    Figures.push_back(c);
-                }
-                if (choosenFigure == "Square")
-                {
-                    CShape s = new CSquare(e.X, e.Y, 50, Color.Blue);
-                    Figures.push_back(s);
-                }
-                if (choosenFigure == "Triangle")
-                {
-                    CShape s = new CTriangle(e.X, e.Y, 50, Color.Blue);
-                    Figures.push_back(s);
-                }
+                CShape cShape = Factory.createShape(choosenFigure, e.X, e.Y, 50, ChosenColor);
+                Figures.push_back(cShape);
             }
             pictureBox1.Invalidate();
         }
@@ -67,6 +57,20 @@ namespace Laba6
             if (sender == buttonTriangle)
             {
                 choosenFigure = "Triangle";
+            }
+        }
+
+        private void ColorButton_Click(object sender, EventArgs e)
+        {
+            ChosenColor = ((Button)sender).BackColor;
+        }
+
+        private void AnyColorButton_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ChosenColor = colorDialog1.Color;
+                ((Button)sender).BackColor = ChosenColor;
             }
         }
     }
