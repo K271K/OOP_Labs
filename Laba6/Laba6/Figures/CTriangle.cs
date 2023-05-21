@@ -16,11 +16,8 @@ namespace Laba6.Figures
         public CTriangle(int _x, int _y, int _size, Color _color): base(_x, _y, _size, _color)
         {
             radius = (float)(size / Math.Sqrt(3));
-            //верхняя точка
-            this.point1 = new Point(this.x, (int)(this.y - this.radius));
-            //правая точка
+            this.point1 = new Point(this.x, (int)(this.y - this.size));
             this.point2 = new Point((int)(this.x + this.size * 0.5), (int)(this.y + this.radius * 0.5));
-            //левая точка
             this.point3 = new Point((int)(this.x - this.size * 0.5), (int)(this.y + this.radius * 0.5));
         }
         public override bool checkHit(int ClickX, int ClickY)
@@ -47,7 +44,7 @@ namespace Laba6.Figures
             point3 = new Point((int)(this.x - this.size * 0.5), (int)(this.y + this.radius * 0.5));
             if (isSelected)
             {
-                g.FillPolygon(new SolidBrush(color), new[] { point1, point2, point3, point1 });
+                g.FillPolygon(new SolidBrush(color), new[] { point1, point2, point3 });
                 g.DrawLines(new Pen(Color.Black, 3), new[] { point1, point2, point3, point1 });
             }
             else
@@ -55,7 +52,6 @@ namespace Laba6.Figures
                 g.FillPolygon(new SolidBrush(color), new[] { point1, point2, point3, point1 });
             }
         }
-
         public override bool isAvailableLocation(int w, int h, int dX, int dY)
         {
             if (point1.Y + dY >= 0 && point3.X + dX >= 0 && point3.Y + dY < h && point2.X + dX <= w)
@@ -64,12 +60,6 @@ namespace Laba6.Figures
             }
             return false;
         }
-
-       /* public override void load()
-        {
-            
-        }*/
-
         public override void save(StreamWriter SW)
         {
             SW.WriteLine("Triangle");

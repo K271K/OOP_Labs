@@ -26,6 +26,9 @@ namespace Laba6.Figures
         }
         public int GetSize() { return size; }
         public bool GetSelected() { return isSelected; }
+        public abstract bool checkHit(int ClickX, int ClickY);
+        public abstract void draw(PaintEventArgs e);
+        public abstract bool isAvailableLocation(int w, int h, int dX, int dY);
         public virtual bool isA(string who)
         {
             return who == "CShape";
@@ -59,9 +62,6 @@ namespace Laba6.Figures
         {
             this.color = newColor;
         }
-        public abstract bool checkHit(int ClickX, int ClickY);
-        public abstract void draw(PaintEventArgs e);
-        public abstract bool isAvailableLocation(int w, int h, int dX, int dY);
         public virtual void save(StreamWriter SW)
         {
             SW.WriteLine(x + "\n" + y + "\n" + color.ToArgb() + "\n" + size + "\n" + this.isSelected);
@@ -77,8 +77,6 @@ namespace Laba6.Figures
             else
                 this.isSelected = false;
         }
-
-
     }
     
     

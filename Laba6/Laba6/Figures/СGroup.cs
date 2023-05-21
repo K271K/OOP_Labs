@@ -15,7 +15,6 @@ namespace Laba6.Figures
         public CGroup(int _x = 0, int _y = 0, int _size = 0, Color _color = default(Color))
         {
         }
-
         private List<CShape> _shape = new List<CShape>();
         public CShape getItem(int index)
         {
@@ -26,6 +25,29 @@ namespace Laba6.Figures
             _shape.Add(shape);
             shape.DeSelect();
             size += 1;
+        }
+        public override bool checkHit(int ClickX, int ClickY)
+        {
+            foreach (CShape shape in _shape)
+            {
+                if (shape.checkHit(ClickX, ClickY))
+                    return true;
+            }
+            return false;
+        }
+        public override void draw(PaintEventArgs e)
+        {
+            foreach (CShape shape in _shape) shape.draw(e);
+
+        }
+        public override bool isAvailableLocation(int w, int h, int dX, int dY)
+        {
+            foreach (CShape shape in _shape)
+            {
+                if (!shape.isAvailableLocation(w, h, dX, dY))
+                    return false;
+            }
+            return true;
         }
         public override bool isA(string who)
         {
@@ -72,31 +94,8 @@ namespace Laba6.Figures
         }
         public override void ColorChange(Color newColor)
         {
-           foreach(CShape shape in _shape) 
-                shape.ColorChange(newColor); 
-        }
-        public override bool checkHit(int ClickX, int ClickY)
-        {
             foreach (CShape shape in _shape)
-            {
-                if (shape.checkHit(ClickX, ClickY))
-                    return true;
-            }
-            return false;
-        }
-        public override void draw(PaintEventArgs e)
-        {
-            foreach (CShape shape in _shape) shape.draw(e);
-
-        }
-        public override bool isAvailableLocation(int w, int h, int dX, int dY)
-        {
-            foreach (CShape shape in _shape)
-            {
-                if(!shape.isAvailableLocation(w, h, dX, dY)) 
-                    return false; 
-            }
-            return true;
+                shape.ColorChange(newColor);
         }
         public override void save(StreamWriter SW)
         {
