@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace Laba6.Figures
 {
@@ -31,9 +32,19 @@ namespace Laba6.Figures
             }
 
         }
-        public override void save() {; }
-        public override void load() {; }
+        public override void save(StreamWriter SW) {
+            SW.WriteLine("Circle");
+            base.save(SW);
+        }
+        /*public override void load() {; }*/
 
-
+        public override bool isAvailableLocation(int w, int h, int dX, int dY)
+        {
+            if (this.y + size/2 + dY >= size && this.x + size/2 + dX >= size && this.y + size/2 + dY <= h && this.x + size/2 + dX <= w)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

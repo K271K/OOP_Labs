@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\USATU\\OOP\\OOP_Labs\\Laba4\\Laba4\\Laba4.csproj": {}
+    "D:\\USATU\\OOP\\OOP_Labs\\Laba4_1\\Laba4\\Laba4.csproj": {}
   },
   "projects": {
-    "D:\\USATU\\OOP\\OOP_Labs\\Laba4\\Laba4\\Laba4.csproj": {
+    "D:\\USATU\\OOP\\OOP_Labs\\Laba4_1\\Laba4\\Laba4.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\USATU\\OOP\\OOP_Labs\\Laba4\\Laba4\\Laba4.csproj",
+        "projectUniqueName": "D:\\USATU\\OOP\\OOP_Labs\\Laba4_1\\Laba4\\Laba4.csproj",
         "projectName": "Laba4",
-        "projectPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba4\\Laba4\\Laba4.csproj",
+        "projectPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba4_1\\Laba4\\Laba4.csproj",
         "packagesPath": "C:\\Users\\achma\\.nuget\\packages\\",
-        "outputPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba4\\Laba4\\obj\\",
+        "outputPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba4_1\\Laba4\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\achma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

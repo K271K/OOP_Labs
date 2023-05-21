@@ -8,19 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\likab\\.nuget\\packages\\": {}
+    "C:\\Users\\achma\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Ravil\\OOP_Labs\\Laba6\\Laba6\\Laba6.csproj",
+      "projectUniqueName": "D:\\USATU\\OOP\\OOP_Labs\\Laba6\\Laba6\\Laba6.csproj",
       "projectName": "Laba6",
-      "projectPath": "D:\\Ravil\\OOP_Labs\\Laba6\\Laba6\\Laba6.csproj",
-      "packagesPath": "C:\\Users\\likab\\.nuget\\packages\\",
-      "outputPath": "D:\\Ravil\\OOP_Labs\\Laba6\\Laba6\\obj\\",
+      "projectPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba6\\Laba6\\Laba6.csproj",
+      "packagesPath": "C:\\Users\\achma\\.nuget\\packages\\",
+      "outputPath": "D:\\USATU\\OOP\\OOP_Labs\\Laba6\\Laba6\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\likab\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\achma\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -64,7 +64,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

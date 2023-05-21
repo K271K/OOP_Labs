@@ -10,7 +10,7 @@ namespace Laba6.Factory
 
     internal abstract class CShapeFactory
     {
-        public abstract CShape createShape(string code, int x, int y, int size, Color color);
+        public abstract CShape createShape(string code, int _x = 0, int _y = 0, int _size = 0, Color _color = default(Color));
 
     }
 }

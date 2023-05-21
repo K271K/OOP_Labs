@@ -33,15 +33,18 @@ namespace Laba6.Figures
                 g.FillRectangle(new SolidBrush(color), x - size / 2, y - size / 2, size, size);
             }
         }
-
-        public override void load()
+        public override bool isAvailableLocation(int w, int h, int dX, int dY)
         {
-
+            if (this.y + size / 2 + dY >= size && this.x + size / 2 + dX >= size && this.y + size / 2 + dY <= h && this.x + size / 2 + dX <= w)
+            {
+                return true;
+            }
+            return false;
         }
-
-        public override void save()
+        public override void save(StreamWriter SW)
         {
-
+            SW.WriteLine("Square");
+            base.save(SW);
         }
     }
 }

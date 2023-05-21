@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            pictureBox1 = new PictureBox();
             figureGroupBox = new GroupBox();
             buttonTriangle = new Button();
             buttonSquare = new Button();
@@ -40,22 +39,19 @@
             buttonBlue = new Button();
             buttonYellow = new Button();
             buttonGreen = new Button();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            pictureBox1 = new Panel();
+            buttonClear = new Button();
+            SaveLoadGroupBox = new GroupBox();
+            buttonLoad = new Button();
+            buttonSave = new Button();
+            saveFileDialog1 = new SaveFileDialog();
+            openFileDialog1 = new OpenFileDialog();
+            label1 = new Label();
+            label2 = new Label();
             figureGroupBox.SuspendLayout();
             colorGroupBox.SuspendLayout();
+            SaveLoadGroupBox.SuspendLayout();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.ControlLightLight;
-            pictureBox1.Dock = DockStyle.Left;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(916, 637);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
-            pictureBox1.Paint += pictureBox1_Paint;
-            pictureBox1.MouseDown += pictureBox1_MouseDown;
             // 
             // figureGroupBox
             // 
@@ -64,7 +60,7 @@
             figureGroupBox.Controls.Add(buttonCircle);
             figureGroupBox.Location = new Point(943, 12);
             figureGroupBox.Name = "figureGroupBox";
-            figureGroupBox.Size = new Size(252, 100);
+            figureGroupBox.Size = new Size(252, 67);
             figureGroupBox.TabIndex = 1;
             figureGroupBox.TabStop = false;
             figureGroupBox.Text = "Figures";
@@ -116,9 +112,9 @@
             colorGroupBox.Controls.Add(buttonYellow);
             colorGroupBox.Controls.Add(buttonGreen);
             colorGroupBox.Controls.Add(buttonRed);
-            colorGroupBox.Location = new Point(943, 144);
+            colorGroupBox.Location = new Point(943, 98);
             colorGroupBox.Name = "colorGroupBox";
-            colorGroupBox.Size = new Size(252, 100);
+            colorGroupBox.Size = new Size(252, 76);
             colorGroupBox.TabIndex = 3;
             colorGroupBox.TabStop = false;
             colorGroupBox.Text = "Color";
@@ -163,25 +159,118 @@
             buttonGreen.UseVisualStyleBackColor = false;
             buttonGreen.Click += ColorButton_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.BackColor = SystemColors.ControlLightLight;
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(901, 556);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.Paint += pictureBox1_Paint;
+            pictureBox1.MouseDown += pictureBox1_MouseDown;
+            pictureBox1.MouseMove += pictureBox1_MouseMove;
+            // 
+            // buttonClear
+            // 
+            buttonClear.Location = new Point(943, 193);
+            buttonClear.Name = "buttonClear";
+            buttonClear.Size = new Size(75, 23);
+            buttonClear.TabIndex = 4;
+            buttonClear.Text = "Clear";
+            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Click += clearBTN_Click;
+            // 
+            // SaveLoadGroupBox
+            // 
+            SaveLoadGroupBox.BackColor = Color.Yellow;
+            SaveLoadGroupBox.Controls.Add(buttonLoad);
+            SaveLoadGroupBox.Controls.Add(buttonSave);
+            SaveLoadGroupBox.Location = new Point(943, 246);
+            SaveLoadGroupBox.Name = "SaveLoadGroupBox";
+            SaveLoadGroupBox.Size = new Size(252, 80);
+            SaveLoadGroupBox.TabIndex = 5;
+            SaveLoadGroupBox.TabStop = false;
+            SaveLoadGroupBox.Text = "File";
+            // 
+            // buttonLoad
+            // 
+            buttonLoad.Location = new Point(155, 22);
+            buttonLoad.Name = "buttonLoad";
+            buttonLoad.Size = new Size(75, 23);
+            buttonLoad.TabIndex = 0;
+            buttonLoad.Text = "Load";
+            buttonLoad.UseVisualStyleBackColor = true;
+            buttonLoad.Click += buttonLoad_Click;
+            // 
+            // buttonSave
+            // 
+            buttonSave.Location = new Point(38, 22);
+            buttonSave.Name = "buttonSave";
+            buttonSave.Size = new Size(75, 23);
+            buttonSave.TabIndex = 0;
+            buttonSave.Text = "Save";
+            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.Click += buttonSave_Click;
+            // 
+            // saveFileDialog1
+            // 
+            saveFileDialog1.Filter = "TXT files|*.txt";
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            openFileDialog1.Filter = "TXT files|*.txt";
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.Yellow;
+            label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlDarkDark;
+            label1.Location = new Point(943, 346);
+            label1.Name = "label1";
+            label1.Padding = new Padding(3);
+            label1.Size = new Size(252, 82);
+            label1.TabIndex = 6;
+            label1.Text = "Shift - сгруппировать объекты. Z - разгруппировать.\r\n";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(949, 456);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 7;
+            label2.Text = "label2";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1207, 637);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(SaveLoadGroupBox);
+            Controls.Add(buttonClear);
+            Controls.Add(pictureBox1);
             Controls.Add(colorGroupBox);
             Controls.Add(figureGroupBox);
-            Controls.Add(pictureBox1);
+            KeyPreview = true;
             Name = "Form1";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            Load += Form1_Load;
+            KeyDown += Form1_KeyDown;
+            KeyUp += Form1_KeyUp;
             figureGroupBox.ResumeLayout(false);
             colorGroupBox.ResumeLayout(false);
+            SaveLoadGroupBox.ResumeLayout(false);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private PictureBox pictureBox1;
         private GroupBox figureGroupBox;
         private Button buttonTriangle;
         private Button buttonSquare;
@@ -193,5 +282,14 @@
         private Button buttonBlue;
         private Button buttonYellow;
         private Button buttonGreen;
+        private Panel pictureBox1;
+        private Button buttonClear;
+        private GroupBox SaveLoadGroupBox;
+        private Button buttonLoad;
+        private Button buttonSave;
+        private SaveFileDialog saveFileDialog1;
+        private OpenFileDialog openFileDialog1;
+        private Label label1;
+        private Label label2;
     }
 }

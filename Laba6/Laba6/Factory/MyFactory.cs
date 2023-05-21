@@ -12,19 +12,22 @@ namespace Laba6.Factory
 
     internal class CMyShapeFactory : CShapeFactory
     {
-        public override CShape createShape(string code, int x, int y, int size, Color color)
+        public override CShape createShape(string code, int _x = 0, int _y = 0, int _size = 0, Color _color = default(Color))
         {
             CShape shape = null;
             switch (code)
             {
                 case "Circle":
-                    shape = new CCircle(x, y, size, color);
+                    shape = new CCircle(_x, _y,  _size, _color);
                     break;
                 case "Triangle":
-                    shape = new CTriangle(x, y, size, color);
+                    shape = new CTriangle(_x, _y, _size, _color);
                     break;
                 case "Square":
-                    shape = new CSquare(x, y, size, color);
+                    shape = new CSquare(_x, _y, _size, _color);
+                    break;
+                case "Group":
+                    shape = new CGroup(_x, _y, _size, _color);
                     break;
                 default:
                     break;
