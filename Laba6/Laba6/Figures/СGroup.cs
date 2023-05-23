@@ -105,7 +105,7 @@ namespace Laba6.Figures
                 shape.save(SW);
             }
         }
-        public override void load(StreamReader SR, CMyShapeFactory factory)
+        public override void load(StreamReader SR, CShapeFactory factory)
         {
             int count = int.Parse(SR.ReadLine());
             bool GroupSelectStatus = SR.ReadLine() == "True";
@@ -114,12 +114,12 @@ namespace Laba6.Figures
                 CShape cShape = factory.createShape(SR.ReadLine());
                 if (cShape != null)
                 {
-                    cShape.load(SR);
+                    cShape.load(SR, factory);
                     addShape(cShape);
                 }
             }
             if (GroupSelectStatus) Select();
-            SR.Close();
+              
         }
     }
 }

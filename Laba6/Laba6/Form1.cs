@@ -177,6 +177,7 @@ namespace Laba6
                     }
                     break;
                 case Keys.Delete:
+
                     for (int i = 0; i < Figures.GetSize(); i++)
                     {
                         if (Figures[i].GetSelected())
@@ -200,8 +201,7 @@ namespace Laba6
                     Figures.push_back(group);
                     break;
                 case Keys.Z:
-                    int length = Figures.GetSize();
-                    for (int i = 0; i < length; i++)
+                    for (int i = 0; i < Figures.GetSize(); i++)
                     {
                         if (Figures[i].GetSelected() && Figures[i].isA("CGroup"))
                         {
@@ -212,8 +212,8 @@ namespace Laba6
                                 g.getItem(j).DeSelect();
                             }
                             Figures.remove(i);
+                            i--;
                         }
-
                     }
                     break;
                 default:

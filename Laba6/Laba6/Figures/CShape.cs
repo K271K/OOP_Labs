@@ -47,7 +47,7 @@ namespace Laba6.Figures
         {               
            if (newSize > 0)
             {
-                if (isAvailableLocation(w-7, h-7, -5, -5))
+                if (isAvailableLocation(w, h, -5, -5) && isAvailableLocation(w,h,5,5))
                     this.size += newSize;
             }
            else
@@ -66,7 +66,7 @@ namespace Laba6.Figures
         {
             SW.WriteLine(x + "\n" + y + "\n" + color.ToArgb() + "\n" + size + "\n" + this.isSelected);
         }
-        public virtual void load(StreamReader SR, CMyShapeFactory factory = default(CMyShapeFactory))
+        public virtual void load(StreamReader SR, CShapeFactory factory = default(CShapeFactory))
         {
             this.x = int.Parse(SR.ReadLine());
             this.y = int.Parse(SR.ReadLine());

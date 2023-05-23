@@ -55,9 +55,12 @@
             // 
             // figureGroupBox
             // 
+            figureGroupBox.BackColor = Color.NavajoWhite;
             figureGroupBox.Controls.Add(buttonTriangle);
             figureGroupBox.Controls.Add(buttonSquare);
             figureGroupBox.Controls.Add(buttonCircle);
+            figureGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            figureGroupBox.ForeColor = SystemColors.ControlDarkDark;
             figureGroupBox.Location = new Point(943, 12);
             figureGroupBox.Name = "figureGroupBox";
             figureGroupBox.Size = new Size(252, 67);
@@ -67,32 +70,41 @@
             // 
             // buttonTriangle
             // 
+            buttonTriangle.BackColor = SystemColors.ControlDarkDark;
+            buttonTriangle.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonTriangle.ForeColor = Color.NavajoWhite;
             buttonTriangle.Location = new Point(87, 22);
             buttonTriangle.Name = "buttonTriangle";
-            buttonTriangle.Size = new Size(75, 23);
+            buttonTriangle.Size = new Size(75, 39);
             buttonTriangle.TabIndex = 2;
             buttonTriangle.Text = "Triangle";
-            buttonTriangle.UseVisualStyleBackColor = true;
+            buttonTriangle.UseVisualStyleBackColor = false;
             buttonTriangle.Click += buttonFigure_Click;
             // 
             // buttonSquare
             // 
+            buttonSquare.BackColor = SystemColors.ControlDarkDark;
+            buttonSquare.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonSquare.ForeColor = Color.NavajoWhite;
             buttonSquare.Location = new Point(168, 22);
             buttonSquare.Name = "buttonSquare";
-            buttonSquare.Size = new Size(75, 23);
+            buttonSquare.Size = new Size(75, 39);
             buttonSquare.TabIndex = 1;
             buttonSquare.Text = "Square";
-            buttonSquare.UseVisualStyleBackColor = true;
+            buttonSquare.UseVisualStyleBackColor = false;
             buttonSquare.Click += buttonFigure_Click;
             // 
             // buttonCircle
             // 
+            buttonCircle.BackColor = SystemColors.ControlDarkDark;
+            buttonCircle.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonCircle.ForeColor = Color.NavajoWhite;
             buttonCircle.Location = new Point(6, 22);
             buttonCircle.Name = "buttonCircle";
-            buttonCircle.Size = new Size(75, 23);
+            buttonCircle.Size = new Size(75, 39);
             buttonCircle.TabIndex = 0;
             buttonCircle.Text = "Circle";
-            buttonCircle.UseVisualStyleBackColor = true;
+            buttonCircle.UseVisualStyleBackColor = false;
             buttonCircle.Click += buttonFigure_Click;
             // 
             // buttonRed
@@ -107,11 +119,14 @@
             // 
             // colorGroupBox
             // 
+            colorGroupBox.BackColor = Color.NavajoWhite;
             colorGroupBox.Controls.Add(AnyColorButton);
             colorGroupBox.Controls.Add(buttonBlue);
             colorGroupBox.Controls.Add(buttonYellow);
             colorGroupBox.Controls.Add(buttonGreen);
             colorGroupBox.Controls.Add(buttonRed);
+            colorGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            colorGroupBox.ForeColor = SystemColors.ControlDarkDark;
             colorGroupBox.Location = new Point(943, 98);
             colorGroupBox.Name = "colorGroupBox";
             colorGroupBox.Size = new Size(252, 76);
@@ -173,19 +188,24 @@
             // 
             // buttonClear
             // 
+            buttonClear.BackColor = Color.NavajoWhite;
+            buttonClear.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            buttonClear.ForeColor = SystemColors.ControlDarkDark;
             buttonClear.Location = new Point(943, 193);
             buttonClear.Name = "buttonClear";
-            buttonClear.Size = new Size(75, 23);
+            buttonClear.Size = new Size(113, 37);
             buttonClear.TabIndex = 4;
-            buttonClear.Text = "Clear";
-            buttonClear.UseVisualStyleBackColor = true;
+            buttonClear.Text = "Clear All";
+            buttonClear.UseVisualStyleBackColor = false;
             buttonClear.Click += clearBTN_Click;
             // 
             // SaveLoadGroupBox
             // 
-            SaveLoadGroupBox.BackColor = Color.Yellow;
+            SaveLoadGroupBox.BackColor = Color.NavajoWhite;
             SaveLoadGroupBox.Controls.Add(buttonLoad);
             SaveLoadGroupBox.Controls.Add(buttonSave);
+            SaveLoadGroupBox.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            SaveLoadGroupBox.ForeColor = SystemColors.ControlDarkDark;
             SaveLoadGroupBox.Location = new Point(943, 246);
             SaveLoadGroupBox.Name = "SaveLoadGroupBox";
             SaveLoadGroupBox.Size = new Size(252, 80);
@@ -195,22 +215,26 @@
             // 
             // buttonLoad
             // 
-            buttonLoad.Location = new Point(155, 22);
+            buttonLoad.BackColor = SystemColors.ControlDarkDark;
+            buttonLoad.ForeColor = Color.NavajoWhite;
+            buttonLoad.Location = new Point(139, 22);
             buttonLoad.Name = "buttonLoad";
-            buttonLoad.Size = new Size(75, 23);
+            buttonLoad.Size = new Size(93, 33);
             buttonLoad.TabIndex = 0;
             buttonLoad.Text = "Load";
-            buttonLoad.UseVisualStyleBackColor = true;
+            buttonLoad.UseVisualStyleBackColor = false;
             buttonLoad.Click += buttonLoad_Click;
             // 
             // buttonSave
             // 
-            buttonSave.Location = new Point(38, 22);
+            buttonSave.BackColor = SystemColors.ControlDarkDark;
+            buttonSave.ForeColor = Color.NavajoWhite;
+            buttonSave.Location = new Point(22, 22);
             buttonSave.Name = "buttonSave";
-            buttonSave.Size = new Size(75, 23);
+            buttonSave.Size = new Size(91, 33);
             buttonSave.TabIndex = 0;
             buttonSave.Text = "Save";
-            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.UseVisualStyleBackColor = false;
             buttonSave.Click += buttonSave_Click;
             // 
             // saveFileDialog1
@@ -224,7 +248,7 @@
             // 
             // label1
             // 
-            label1.BackColor = Color.Yellow;
+            label1.BackColor = Color.NavajoWhite;
             label1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = SystemColors.ControlDarkDark;
             label1.Location = new Point(943, 346);
@@ -259,7 +283,7 @@
             Controls.Add(figureGroupBox);
             KeyPreview = true;
             Name = "Form1";
-            Text = "Form1";
+            Text = "MyPaint";
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
             KeyUp += Form1_KeyUp;
