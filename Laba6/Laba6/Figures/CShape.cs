@@ -1,4 +1,5 @@
 ﻿using Laba6.Factory;
+using Laba6.Observer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,15 +18,20 @@ namespace Laba6.Figures
         protected int size = 50;
         protected Color color;
         protected bool isSelected = false;
+        public DirectObservable observable { get; protected set; }
+        public DirectObserver observer { get; protected set; }
         public CShape(int _x = 0, int _y = 0, int _size = 0, Color _color = default(Color))
         {
             x = _x;
             y = _y;
             size = _size;
             color = _color;
+            observable = new DirectObservable();
+            observer = new DirectObserver();
         }
         public int GetSize() { return size; }
         public bool GetSelected() { return isSelected; }
+        
         public abstract bool checkHit(int ClickX, int ClickY);
         public abstract void draw(PaintEventArgs e);
         public abstract bool isAvailableLocation(int w, int h, int dX, int dY);
@@ -41,6 +47,7 @@ namespace Laba6.Figures
             {
                 this.x += dX;
                 this.y += dY;
+                observable.NotifyObservers(w,h,dX,dY);
             }
         }
         public virtual void SizeChange(int newSize, int w, int h)
@@ -76,6 +83,10 @@ namespace Laba6.Figures
                 this.isSelected = true;
             else
                 this.isSelected = false;
+        }
+        public virtual PointF GetCenter()
+        {
+            return new PointF(this.x, this.y);
         }
     }
     

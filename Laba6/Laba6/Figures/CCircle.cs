@@ -32,6 +32,9 @@ namespace Laba6.Figures
             }
 
         }
+
+        
+
         public override bool isAvailableLocation(int w, int h, int dX, int dY)
         {
             if (this.y + size / 2 + dY >= size && this.x + size / 2 + dX >= size && this.y + size / 2 + dY <= h && this.x + size / 2 + dX <= w)

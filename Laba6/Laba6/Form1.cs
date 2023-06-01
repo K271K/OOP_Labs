@@ -16,6 +16,7 @@ namespace Laba6
         public string filename;
 
         bool ctrlPressed = false;
+        bool ArrowActivated = false;
 
         Color ChosenColor = Color.Red;
 
@@ -47,6 +48,28 @@ namespace Laba6
                     }
                 }
             }
+            if (ArrowActivated)
+            {
+                CShape ArrowHead = null;
+                foreach (CShape s in Figures)
+                {
+                    if (s.GetSelected())
+                    {
+                        ArrowHead = s;
+                        isNew = false;
+                    }
+                    
+                }
+                foreach(CShape s in Figures)
+                {
+                    if (s.checkHit(e.X, e.Y) && ArrowHead != null)
+                    {
+                        ArrowHead.observable.AddObserver(s);
+                        s.observer.AddParent(ArrowHead);
+                        isNew = false;
+                    }
+                }
+            }
             //Если не нажат, то клик на уже созданный объект ничего не сделает
             else
             {
@@ -73,6 +96,8 @@ namespace Laba6
             foreach (CShape s in Figures)
             {
                 s.draw(e);
+                s.observable.ShowLines(s.GetCenter().X, s.GetCenter().Y,e);
+
             }
         }
         //Выбор фигуры, которая будет рисоваться
@@ -128,6 +153,7 @@ namespace Laba6
             {
                 case Keys.ControlKey:
                     ctrlPressed = true;
+                    label2.Text = "Ctrl true";
                     break;
                 case Keys.W:
 
@@ -182,6 +208,7 @@ namespace Laba6
                     {
                         if (Figures[i].GetSelected())
                         {
+                            Figures[i].observable.Clear();
                             Figures.remove(i);
                             i--;
                         }
@@ -211,10 +238,15 @@ namespace Laba6
                                 Figures.push_back(g.getItem(j));
                                 g.getItem(j).DeSelect();
                             }
+                            
                             Figures.remove(i);
                             i--;
                         }
                     }
+                    break;
+                case Keys.M:
+                    label3.Text = "M true";
+                    ArrowActivated = true;
                     break;
                 default:
                     break;
@@ -224,7 +256,16 @@ namespace Laba6
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.ControlKey) { ctrlPressed = false; }
+            if (e.KeyCode == Keys.ControlKey)
+            {
+                ctrlPressed = false;
+                label2.Text = "Ctrl false";
+            }
+            if (e.KeyCode == Keys.M)
+            {
+                ArrowActivated = false;
+                label3.Text = "M false";
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -269,7 +310,7 @@ namespace Laba6
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            label2.Text = e.X.ToString() + " " + e.Y.ToString();
+            //label2.Text = e.X.ToString() + " " + e.Y.ToString();
         }
     }
 

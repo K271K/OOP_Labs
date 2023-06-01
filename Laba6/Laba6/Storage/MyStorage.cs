@@ -15,10 +15,10 @@ namespace Laba6.Storage
 
     internal class MyList<T> : IEnumerable
     {
-        private int Size;
+        protected int Size;
         public int GetSize() { return Size; }
-        private Node<T> Head { get; set; }
-        private Node<T> Tail { get; set; }
+        protected Node<T> Head { get; set; }
+        protected Node<T> Tail { get; set; }
         //Чтобы работал foreach
         public IEnumerator GetEnumerator()
         {
@@ -85,7 +85,7 @@ namespace Laba6.Storage
                 return tempData;
             }
         }
-        public T remove(int index)
+        public virtual T remove(int index)
         {
             if (index < 0 || index - Size > -1)
             {

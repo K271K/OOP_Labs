@@ -25,7 +25,6 @@ namespace Laba6.Storage
             }
             SR.Close();
         }
-   
     }
 
 }

@@ -72,9 +72,12 @@ namespace Laba6.Figures
         public override void move(int w, int h, int dX, int dY)
         {
             if (this.isAvailableLocation(w, h, dX, dY))
+            {
                 foreach (CShape shape in _shape)
-                    shape.move(w,h,dX,dY);
-            
+                    shape.move(w, h, dX, dY);
+
+                observable.NotifyObservers(w,h, dX, dY);
+            }
         }
         public override void SizeChange(int newSize, int w, int h)
         {

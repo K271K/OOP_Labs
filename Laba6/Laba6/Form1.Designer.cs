@@ -48,6 +48,7 @@
             openFileDialog1 = new OpenFileDialog();
             label1 = new Label();
             label2 = new Label();
+            label3 = new Label();
             figureGroupBox.SuspendLayout();
             colorGroupBox.SuspendLayout();
             SaveLoadGroupBox.SuspendLayout();
@@ -268,12 +269,22 @@
             label2.TabIndex = 7;
             label2.Text = "label2";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(949, 493);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 15);
+            label3.TabIndex = 7;
+            label3.Text = "label2";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
             ClientSize = new Size(1207, 637);
+            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(SaveLoadGroupBox);
@@ -315,5 +326,6 @@
         private OpenFileDialog openFileDialog1;
         private Label label1;
         private Label label2;
+        private Label label3;
     }
 }
