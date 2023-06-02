@@ -112,7 +112,7 @@ namespace Laba6.Storage
                 return ToDeleteData;
             }
         }
-        public void clear()
+        public virtual void clear()
         {
             while (Size != 0)
             {

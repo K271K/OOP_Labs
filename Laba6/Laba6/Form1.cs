@@ -58,14 +58,14 @@ namespace Laba6
                         ArrowHead = s;
                         isNew = false;
                     }
-                    
+
                 }
-                foreach(CShape s in Figures)
+                foreach (CShape s in Figures)
                 {
                     if (s.checkHit(e.X, e.Y) && ArrowHead != null)
                     {
                         ArrowHead.observable.AddObserver(s);
-                        s.observer.AddParent(ArrowHead);
+                        //s.observer.AddParent(ArrowHead);
                         isNew = false;
                     }
                 }
@@ -95,8 +95,9 @@ namespace Laba6
         {
             foreach (CShape s in Figures)
             {
+                
                 s.draw(e);
-                s.observable.ShowLines(s.GetCenter().X, s.GetCenter().Y,e);
+                s.observable.ShowLines(s.GetCenter().X, s.GetCenter().Y, e);
 
             }
         }
@@ -208,7 +209,6 @@ namespace Laba6
                     {
                         if (Figures[i].GetSelected())
                         {
-                            Figures[i].observable.Clear();
                             Figures.remove(i);
                             i--;
                         }
@@ -238,7 +238,7 @@ namespace Laba6
                                 Figures.push_back(g.getItem(j));
                                 g.getItem(j).DeSelect();
                             }
-                            
+
                             Figures.remove(i);
                             i--;
                         }
@@ -306,11 +306,6 @@ namespace Laba6
                 Figures.loadShapes(filename, Factory);
                 pictureBox1.Invalidate();
             }
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            //label2.Text = e.X.ToString() + " " + e.Y.ToString();
         }
     }
 
