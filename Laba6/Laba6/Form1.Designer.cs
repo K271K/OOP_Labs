@@ -187,7 +187,6 @@
             pictureBox1.TabIndex = 0;
             pictureBox1.Paint += pictureBox1_Paint;
             pictureBox1.MouseDown += pictureBox1_MouseDown;
-            pictureBox1.MouseMove += pictureBox1_MouseMove;
             // 
             // buttonClear
             // 
