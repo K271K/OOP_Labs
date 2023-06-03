@@ -30,6 +30,8 @@ namespace Laba6.Figures
             {
                 g.FillEllipse(new SolidBrush(color), x - size / 2, y - size / 2, this.size, this.size);
             }
+            observer.Changed(e);
+            observable.ToDefault();
 
         }
 

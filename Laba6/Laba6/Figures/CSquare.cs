@@ -32,6 +32,8 @@ namespace Laba6.Figures
             {
                 g.FillRectangle(new SolidBrush(color), x - size / 2, y - size / 2, size, size);
             }
+            observer.Changed(e);
+            observable.ToDefault();
         }
         public override bool isAvailableLocation(int w, int h, int dX, int dY)
         {

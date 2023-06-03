@@ -48,7 +48,7 @@ namespace Laba6.Storage
 
         }
         //Добавить в конец
-        public void push_back(T data)
+        public virtual void push_back(T data)
         {
             if (Head == null)
             {
@@ -63,7 +63,7 @@ namespace Laba6.Storage
             Size++;
 
         }
-        public T pop_front()
+        public virtual T pop_front()
         {
             if (Head == null)
                 return default;
@@ -112,7 +112,7 @@ namespace Laba6.Storage
                 return ToDeleteData;
             }
         }
-        public void clear()
+        public virtual void clear()
         {
             while (Size != 0)
             {

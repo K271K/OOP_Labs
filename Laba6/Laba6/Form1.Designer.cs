@@ -49,6 +49,8 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            treeView1 = new TreeView();
+            button1 = new Button();
             figureGroupBox.SuspendLayout();
             colorGroupBox.SuspendLayout();
             SaveLoadGroupBox.SuspendLayout();
@@ -278,16 +280,39 @@
             label3.TabIndex = 7;
             label3.Text = "label2";
             // 
+            // treeView1
+            // 
+            treeView1.Location = new Point(1238, 12);
+            treeView1.Name = "treeView1";
+            treeView1.Size = new Size(212, 416);
+            treeView1.TabIndex = 8;
+            treeView1.Click += treeView1_Click;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.NavajoWhite;
+            button1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            button1.ForeColor = SystemColors.ControlDarkDark;
+            button1.Location = new Point(1073, 193);
+            button1.Name = "button1";
+            button1.Size = new Size(122, 37);
+            button1.TabIndex = 4;
+            button1.Text = "Deselect All";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
-            ClientSize = new Size(1207, 637);
+            ClientSize = new Size(1485, 637);
+            Controls.Add(treeView1);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(SaveLoadGroupBox);
+            Controls.Add(button1);
             Controls.Add(buttonClear);
             Controls.Add(pictureBox1);
             Controls.Add(colorGroupBox);
@@ -327,5 +352,7 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private TreeView treeView1;
+        private Button button1;
     }
 }

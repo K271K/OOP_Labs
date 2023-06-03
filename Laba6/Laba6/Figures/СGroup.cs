@@ -15,7 +15,7 @@ namespace Laba6.Figures
         public CGroup(int _x = 0, int _y = 0, int _size = 0, Color _color = default(Color))
         {
         }
-        private List<CShape> _shape = new List<CShape>();
+        public List<CShape> _shape = new List<CShape>();
         public CShape getItem(int index)
         {
             return _shape[index];
@@ -38,6 +38,8 @@ namespace Laba6.Figures
         public override void draw(PaintEventArgs e)
         {
             foreach (CShape shape in _shape) shape.draw(e);
+            observer.Changed(e);
+            observable.ToDefault(); 
 
         }
         public override bool isAvailableLocation(int w, int h, int dX, int dY)
@@ -77,7 +79,9 @@ namespace Laba6.Figures
                     shape.move(w, h, dX, dY);
 
                 observable.NotifyObservers(w,h, dX, dY);
+             
             }
+
         }
         public override void SizeChange(int newSize, int w, int h)
         {

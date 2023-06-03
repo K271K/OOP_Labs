@@ -24,8 +24,13 @@ namespace Laba6.Observer
         {
             for (int i = 0; i< observers.Count; i++)
             {
-                    observers[i].move(w,h,dx,dy);
-                
+                if (visited[i] == false)
+                {
+                    visited[i] = true;
+                    observers[i].move(w,h, dx, dy);
+
+                }
+
             }
         }
         public void AddObserver(CShape s)
@@ -52,6 +57,13 @@ namespace Laba6.Observer
                 Pen pen = new Pen(Color.Black, 1.0f);
                 pen.CustomEndCap = new AdjustableArrowCap(6, 6, true);
                 pict.Graphics.DrawLine(pen, start_x, start_y, s.GetCenter().X, s.GetCenter().Y);
+            }
+        }
+        public void ToDefault()
+        {
+            for (int i = 0; i < visited.Count; i++)
+            {
+                visited[i] = false;
             }
         }
 

@@ -51,6 +51,8 @@ namespace Laba6.Figures
             {
                 g.FillPolygon(new SolidBrush(color), new[] { point1, point2, point3, point1 });
             }
+            observer.Changed(e);
+            observable.ToDefault();
         }
         public override bool isAvailableLocation(int w, int h, int dX, int dY)
         {
